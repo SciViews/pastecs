@@ -55,16 +55,10 @@ function(x, basic=TRUE, desc=TRUE, norm=FALSE, p=.95) {
 				# +/- sqrt(24/Nbrval) for Nbrval > 150, same ref.
 				Kurt.2SE <- Kurt/(2*SE)
 				# Same remark as for Skew.2SE!
-				if (exists("is.R") && is.function(is.R) && is.R()) {
-					# This is the Shapiro-Wilk test of normality
-					# Now done with Depends: field require(stats)		# For Kolmogorov-Smirnov or Shapiro-Wilk normality tests in R
-					Ntest <- shapiro.test(x)
-					Ntest.W <- Ntest$statistic; names(Ntest.W) <- NULL
-					Ntest.p <- Ntest$p.value
-				} else {	# We are in Splus
-					# No normality test currently available!
-					Ntest.W <- NA; Ntest.p <- NA
-				}
+				# This is the Shapiro-Wilk test of normality
+				Ntest <- shapiro.test(x)
+				Ntest.W <- Ntest$statistic; names(Ntest.W) <- NULL
+				Ntest.p <- Ntest$p.value
 				Res3 <- list(skewness=Skew, skew.2SE=Skew.2SE, kurtosis=Kurt, kurt.2SE=Kurt.2SE, normtest.W=Ntest.W, normtest.p=Ntest.p)
 			} else Res3 <- NULL
 		}

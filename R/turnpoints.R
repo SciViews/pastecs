@@ -3,8 +3,6 @@ function(x) {
 	data <- deparse(substitute(x))
 	if (is.null(ncol(x)) == FALSE)
 		stop("Only one series can be treated at a time")
-	# if (exists("is.R") && is.function(is.R) && is.R())	# We are in R
-		# Now done with Depends: field require(stats)
     x <- as.vector(x)
     n <- length(x)
     diffs <- c(x[1]-1, x[1:(n-1)]) != x
@@ -23,16 +21,13 @@ function(x) {
     	info <- NA
     } else {
     	# The following code is faster in R, but do not work all the time!
-    	#if (exists("is.R") && is.function(is.R) && is.R()) {	# We are in R
     	#	ex <- embed(uniques, 3)	# Works only in R!
     	#	peaks <- c(FALSE, max.col(ex) == 2, FALSE)
     	#	pits <- c(FALSE, max.col(-ex) == 2, FALSE)
-    	#} else {												# We are in S+
-    		m <- n2 - 2
-    		ex <- matrix(uniques[1:m + rep(3:1, rep(m, 3)) - 1], m)
-    		peaks <- c(FALSE, apply(ex, 1, max, na.rm=TRUE) == ex[, 2], FALSE)
-    		pits <- c(FALSE, apply(ex, 1, min, na.rm=TRUE) == ex[, 2], FALSE)
-    	#}
+    	m <- n2 - 2
+    	ex <- matrix(uniques[1:m + rep(3:1, rep(m, 3)) - 1], m)
+    	peaks <- c(FALSE, apply(ex, 1, max, na.rm=TRUE) == ex[, 2], FALSE)
+    	pits <- c(FALSE, apply(ex, 1, min, na.rm=TRUE) == ex[, 2], FALSE)
     	tpts <- peaks | pits
     	if (sum(tpts) == 0) {	# No turning point
     		nturns <- 0

@@ -1,11 +1,7 @@
 "tsd" <-
 function (x, specs=NULL, method="loess", type=if(method == "census") "multiplicative" else "additive", lag=1, axes=1:5, order=1, times=1, sides=2, ends="fill", weights=NULL, s.window=NULL, s.degree=0, t.window=NULL, t.degree=2, robust=FALSE, trend=FALSE, xreg=NULL) {
 	call <- match.call()
-    if (exists("is.R") && is.function(is.R) && is.R()) {	# We are in R
-    	x <- as.ts(x)
-    } else {												# We are in S+
-		x <- as.rts(x)
-	}
+    x <- as.ts(x)
   	# Do we have specs?
  	if (!is.null(specs)) {
  		# Verify it is an object of the right class 'specs.tsd'
@@ -116,11 +112,7 @@ function (x, specs=NULL, method="loess", type=if(method == "census") "multiplica
 		res$ts <- dimnames(x)[[2]]
 		# We initiate series
 		res$series <- list(1)
-		if (exists("is.R") && is.function(is.R) && is.R()) {	# We are in R
-			res$units <- attr(x, "units")
-		} else {											# We are in Splus
-			res$units <- attr(attr(x, "tspar"), "units")
-		}
+		res$units <- attr(x, "units")
 		res$specs <- specs
 		res$call <- call
 		# Calculation is performed alternatively on each column

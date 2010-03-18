@@ -1,5 +1,8 @@
 \name{decevf}
 \alias{decevf}
+
+\encoding{latin1}
+
 \title{ Time series decomposition using eigenvector filtering (EVF) }
 \description{
   The eigenvector filtering decomposes the signal by applying a principal component analysis (PCA) on the original signal and a certain number of copies of it incrementally lagged, collected in a multivariate matrix. Reconstructing the signal using only the most representative eigenvectors allows filtering it.

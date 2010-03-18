@@ -1,5 +1,8 @@
 \name{is.tseries}
 \alias{is.tseries}
+
+\encoding{latin1}
+
 \title{ Is this object a time series? }
 \description{
   This is equivalent to \code{is.rts()} in Splus and to \code{is.ts()} in \R. \code{is.tseries()} recognizes both 'rts' and 'ts' objects whatever the environment (Splus or R)

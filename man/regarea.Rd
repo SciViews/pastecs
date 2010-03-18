@@ -1,5 +1,8 @@
 \name{regarea}
 \alias{regarea}
+
+\encoding{latin1}
+
 \title{ Regulate a series using the area method }
 \description{
   Transform an irregular time series in a regular time series, or fill gaps in regular time series using the area method

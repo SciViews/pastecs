@@ -41,8 +41,7 @@ function(x, level=1, verbose=TRUE) {
 		if (verbose==TRUE) {
 			vrStr <- format(c(vr[i], 111))[1]
 			cat("Variable", vrStr, "incorporated, RV =", Rvmax, "\n")
-			if (exists("is.R") && is.function(is.R) && is.R() && R.Version()$os == "Win32") {	# We are in R Windows
-				flush.console()}
+			flush.console()
 		}
 		if (Rvmax>level) break	# Stop iteration (level reached)
 	}

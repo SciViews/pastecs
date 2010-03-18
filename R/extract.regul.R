@@ -18,13 +18,8 @@ function(e, n, series=NULL, ...) {
 	} else {			# Use series to determine which series to extract
 		y <- as.matrix(e$y)[, series]
 	}		
-	# The treatment is different in R and in S+
-	# In R, we create a 'ts' object, in S+, we create a 'rts' object
-	if (exists("is.R") && is.function(is.R) && is.R()) {	# We are in R
-		res <- ts(y, start=e$tspar$start, frequency=e$tspar$frequency)
-		attr(res, "units") <- e$units
-	} else {												# We are in S+
-		res <- rts(y, start=e$tspar$start, frequency=e$tspar$frequency, units=e$units)
-	}
+	# We create a 'ts' object
+	res <- ts(y, start = e$tspar$start, frequency = e$tspar$frequency)
+	attr(res, "units") <- e$units
 	res
 }

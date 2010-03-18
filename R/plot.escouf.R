@@ -17,12 +17,7 @@ function(x, level=x$level, lhorz=TRUE, lvert=TRUE, lvars=TRUE, lcol=2, llty=2, d
 			# Draw the label
 			xPos <- n*Dpos
 			yInd <- round(xPos); if (yInd<length(RVds)) yInd <- length(RVds)
-			if (exists("is.R") && is.function(is.R) && is.R()) {	# We are in R
-				text(xPos, RVds[yInd], Dlab, pos=3, col=Dcol)
-			} else {	# We are in S+, and the pos option does not exist for the text function!
-				yoffset <- (max(X$RV)-min(X$RV))/20
-				text(xPos, RVds[yInd]+yoffset, Dlab, col=Dcol)
-			}
+			text(xPos, RVds[yInd], Dlab, pos=3, col=Dcol)
 		}
 		if (is.null(Level)==FALSE) { # We draw the lines
 			if (Lhorz==TRUE)		# We draw also a horizontal line
@@ -32,11 +27,7 @@ function(x, level=x$level, lhorz=TRUE, lvert=TRUE, lvars=TRUE, lcol=2, llty=2, d
 			if (Lvert==TRUE)		# We draw also a vertical line
 				lines(c(nvars+0.5, nvars+0.5), c(-0.1,1.5), lty=Llty, col=Lcol)
 			if (Lvars==TRUE)		# We change also colors of selected variables labels
-				if (exists("is.R") && is.function(is.R) && is.R()) {	# We are in R
-					axis(1, 1:nvars, labels=as.character(X$vr[1:nvars]), col.axis=Lcol)
-				} else {	# We are in S+, axis color is set by col
-					axis(1, 1:nvars, labels=as.character(X$vr[1:nvars]), col=Lcol)
-				}
+				axis(1, 1:nvars, labels=as.character(X$vr[1:nvars]), col.axis=Lcol)
 		}
 			
 	}

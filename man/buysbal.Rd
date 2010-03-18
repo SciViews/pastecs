@@ -1,5 +1,8 @@
 \name{buysbal}
 \alias{buysbal}
+
+\encoding{latin1}
+
 \title{ Buys-Ballot table }
 \description{
   Calculate a Buys-Ballot table from a time-series

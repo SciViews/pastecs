@@ -7,15 +7,6 @@ function (x, y=NULL, xmin=min(x), n=length(x), deltat=(max(x)-min(x))/(n-1), rul
     if (deltat <= 0) 
     	stop("regconst requires deltat > 0")
 	xout <- 0:(n-1) * deltat + xmin
-	# In S+, missing values are not allowed, but in R it is OK
-	if (exists("is.R") && is.function(is.R) && is.R()) {	# We are in R
-		# Leave the series like this
-	} else {												# We are in S+
-		# Eliminate missing values
-		ok <- !(is.na(x) | is.na(y))
-		x <- x[ok]
-    	y <- y[ok]
-	}
 	# Make sure data are sorted in increasing order according to x
 	srt <- sort.list(x)
 	x <- x[srt]

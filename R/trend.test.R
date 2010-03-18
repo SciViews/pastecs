@@ -1,14 +1,8 @@
 "trend.test" <-
 function(tseries, R=1) {
 	Call <- deparse(substitute(tseries))
-	if (exists("is.R") && is.function(is.R) && is.R()) {	# We are in R
-		# Now done with Depends: field require(stats)
-		x <- as.ts(tseries)
-		Names <- colnames(x)
-	} else {												# We are in S+
-		x <- as.rts(tseries)
-		Names <- names(x)
-	}
+	x <- as.ts(tseries)
+	Names <- colnames(x)
 	if (R < 2) {	# Simple test
 		if (is.matrix(x) == TRUE) {	# Multiple time series	
 			n <- ncol(x)
@@ -36,27 +30,16 @@ function(tseries, R=1) {
 			rhos <- apply(data.rank, 2, cor, rank(time(Tseries)))
 			rhos
 		}	
-		if (exists("is.R") && is.function(is.R) && is.R()) {		# We are in R
-			require(boot)
-			if (is.matrix(x) == TRUE && ncol(x) > 1) {
-				res <- tsboot(x, test.trends, R = R, sim = "fixed", l = 1)
-			} else {
-				dim(x) <- NULL
-				res <- tsboot(x, test.trend, R = R, sim = "fixed", l = 1)
-			}
-			boot.t <- res$t
-			boot.t0 <- res$t0
-			boot.R <- res$R
-		} else {		# We are in S+
-			if (is.matrix(x) == TRUE) {
-				res <- bootstrap(as.matrix(x), test.trends, B = R)
-			} else {
-				res <- bootstrap(as.vector(x), test.trend, B = R)
-            }
-			boot.t <- res$replicates
-			boot.t0 <- res$observed
-			boot.R <- res$B	
+		require(boot)
+		if (is.matrix(x) == TRUE && ncol(x) > 1) {
+			res <- tsboot(x, test.trends, R = R, sim = "fixed", l = 1)
+		} else {
+			dim(x) <- NULL
+			res <- tsboot(x, test.trend, R = R, sim = "fixed", l = 1)
 		}
+		boot.t <- res$t
+		boot.t0 <- res$t0
+		boot.R <- res$R
 		# Calculate P-value associated with the bootstrap test
 		n <- ncol(boot.t)
 		if (is.null(n)) {		# Single test

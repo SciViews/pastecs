@@ -1,5 +1,8 @@
 \name{decdiff}
 \alias{decdiff}
+
+\encoding{latin1}
+
 \title{ Time series decomposition using differences (trend elimination) }
 \description{
   A filtering using X(t+lag) - X(t) has the property to eliminate the general trend from the series, whatever its shape

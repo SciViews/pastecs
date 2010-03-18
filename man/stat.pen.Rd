@@ -1,5 +1,8 @@
 \name{stat.pen}
 \alias{stat.pen}
+
+\encoding{latin1}
+
 \title{ Pennington statistics on a data frame or time series }
 \description{
   Compute a table giving various descriptive statistics, including Pennington's estimators of the mean, the variance and the variance of the mean, about the series in a data frame or in a single/multiple time series

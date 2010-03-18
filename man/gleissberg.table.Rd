@@ -1,5 +1,8 @@
 \name{.gleissberg.table}
 \alias{.gleissberg.table}
+
+\encoding{latin1}
+
 \non_function{}
 \title{Table of probabilities according to the Gleissberg distribution}
 %\usage{data(gleissberg.table)}

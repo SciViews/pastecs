@@ -1,11 +1,7 @@
 "decmedian" <-
 function(x, type="additive", order=1, times=1, ends="fill") {
 	call <- match.call()
-	if (exists("is.R") && is.function(is.R) && is.R()) {	# We are in R
-		x <- as.ts(x)
-	} else {												# We are in S+
-		x <- as.rts(x)
-	}
+	x <- as.ts(x)
 	if (is.matrix(x) && ncol(x) != 1) 
 		stop("only univariate series are allowed")
 	if (!is.numeric(order) || order <= 0)
@@ -38,11 +34,7 @@ function(x, type="additive", order=1, times=1, ends="fill") {
 	# create our own specs component
 	specs <- list(method="median", type=type, order=order, times=times, ends=ends)
 	# we recuperate units from x
-	if (exists("is.R") && is.function(is.R) && is.R()) {	# We are in R
-		units <- attr(x, "units")
-	} else {
-		units <- attr(attr(x, "tspar"), "units")
-	}
+	units <- attr(x, "units")
 	# perform filtering
 	filtmedian <- function(x, n, order, term, na.rm) {
 		X <- NULL
@@ -66,8 +58,6 @@ function(x, type="additive", order=1, times=1, ends="fill") {
 	} else {
 		residuals <- x / filtered
 	}
-	#if (exists("is.R") && is.function(is.R) && is.R())	# We are in R
-		# Now done with Depends: field require(stats)
 	series <- ts.union(filtered, residuals)
 	# create our own 'tsd' structure
 	res <- list(ts="series", series=series, units=units, specs=specs, call=call)

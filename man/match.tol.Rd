@@ -1,5 +1,8 @@
 \name{match.tol}
 \alias{match.tol}
+
+\encoding{latin1}
+
 \title{ Determine matching observation with a tolerance in time-scale }
 \description{
   Determine which observations in a regular time series match observation in an original irregular one, accepting a given tolerance window in the time-scale. This function is internally used for regulation (functions \code{regul()}, \code{regul.screen()} and \code{regul.adj()}

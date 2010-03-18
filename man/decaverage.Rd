@@ -1,5 +1,8 @@
 \name{decaverage}
 \alias{decaverage}
+
+\encoding{latin1}
+
 \title{ Time series decomposition using a moving average }
 \description{
   Decompose a single regular time series with a moving average filtering. Return a 'tsd' object. To decompose several time series at once, use \code{tsd()} with the argument \code{method="average"}

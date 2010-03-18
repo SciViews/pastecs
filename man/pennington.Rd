@@ -1,5 +1,8 @@
 \name{pennington}
 \alias{pennington}
+
+\encoding{latin1}
+
 \title{ Calculate Pennington statistics }
 \description{
   Calculate the mean, the variance and the variance of the mean for a single series, according to Pennington (correction for zero/missing values for abundance of species collected with a net)

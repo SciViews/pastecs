@@ -1,5 +1,8 @@
 \name{regconst}
 \alias{regconst}
+
+\encoding{latin1}
+
 \title{ Regulate a series using the constant value method }
 \description{
   Transform an irregular time series in a regular time series, or fill gaps in regular time series using the constant value method
@@ -26,7 +29,7 @@ regconst(x, y=NULL, xmin=min(x), n=length(x),
 \author{ Frédéric Ibanez (\email{ibanez@obs-vlfr.fr}), Philippe Grosjean (\email{phgrosjean@sciviews.org}) }
 \note{ This function uses \code{approx()} for internal calculations }
 
-\seealso{ \code{\link{regul}}, \code{\link{regarea}}, \code{\link{reglin}}, \code{\link{regspline}}, \code{\link{regul.screen}}, \code{\link{regul.adj}}, \code{\link{tseries}}, \code{\link{is.tseries}}, \code{\link[base]{approxfun}} }
+\seealso{ \code{\link{regul}}, \code{\link{regarea}}, \code{\link{reglin}}, \code{\link{regspline}}, \code{\link{regul.screen}}, \code{\link{regul.adj}}, \code{\link{tseries}}, \code{\link{is.tseries}} }
 
 \examples{
 data(releve)

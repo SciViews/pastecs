@@ -1,5 +1,8 @@
 \name{deccensus}
 \alias{deccensus}
+
+\encoding{latin1}
+
 \title{ Time decomposition using the CENSUS II method }
 \description{
   The CENSUS II method allows to decompose a regular time series into a trend, a seasonal component and residuals, according to a multiplicative model
@@ -18,7 +21,7 @@ deccensus(x, type="multiplicative", trend=FALSE)
 \value{
   a 'tsd' object
 }
-\references{ 
+\references{
 Béthoux, N., M. Etienne, F. Ibanez & J.L. Rapaire, 1980. \emph{Spécificités hydrologiques des zones littorales. Analyse chronologique par la méthode CENSUS II et estimation des échanges océan-atmosphère appliqués à la baie de Villefranche sur mer.} Ann. Inst. Océanogr. Paris, 56:81-95.
 
 Fromentin, J.M. & F. Ibanez, 1994. \emph{Year to year changes in meteorological features on the French coast area during the last half-century. Examples of two biological responses.} Oceanologica Acta, 17:285-296.

@@ -6,6 +6,9 @@
 \alias{print.summary.turnogram}
 \alias{print.turnogram}
 \alias{summary.turnogram}
+
+\encoding{latin1}
+
 \title{ Calculate and plot a turnogram for a regular time series }
 \description{
 The turnogram is the variation of a monotony index with the observation scale (the number of data per time unit). A monotony index indicates if the series has more or less erratic variations than a pure random succession of independent observations. Since a time series almost always has autocorrelation, it is expected to be more monotonous than a purely random series. The monotony index is a way to quantify the density of information beared by a time series. The turnogram determines at which observation scale this density of information is maximum. It is also the scale that optimize the sampling effort (best compromise between less samples versus more information).

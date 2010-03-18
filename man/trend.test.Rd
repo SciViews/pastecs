@@ -1,5 +1,8 @@
 \name{trend.test}
 \alias{trend.test}
+
+\encoding{latin1}
+
 \title{ Test if an increasing or decreasing trend exists in a time series }
 \description{
 Test if the series has an increasing or decreasing trend, using a non-parametric Spearman test between the observations and time

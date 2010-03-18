@@ -4,6 +4,8 @@
 \alias{plot.stat.slide}
 \alias{print.stat.slide}
 
+\encoding{latin1}
+
 \title{ Sliding statistics }
 \description{
 Statistical parameters are not constant along a time series: mean or variance can vary each year, or during particular intervals (radical or smooth changes due to a pollution, a very cold winter, a shift in the system behaviour, etc. Sliding statistics offer the potential to describe series on successive blocs defined along the space-time axis

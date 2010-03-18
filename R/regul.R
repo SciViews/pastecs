@@ -98,11 +98,7 @@ function (x, y = NULL, xmin=min(x), n=length(x), units="days", frequency=NULL, d
 		# We have days as units. We want years with a "linear scale", i.e.: 1 year = 365.25 days, 1 month = 1/12 years
 		# We want also the integer value reflect exactly the current year, i.e.: 1997.xxx for dates in the year 1997
 		if(is.null(yearorig <- options("chron.origin")$year)) {
-			if (exists("is.R") && is.function(is.R) && is.R()) {	# We are in R
-				yearorig <- 1970
-			} else {												# We are in Splus
-				yearorig <- 1960
-			}
+			yearorig <- 1970
 		}
 		x <- x/365.25 + yearorig
 		xmin <- xmin/365.25 + yearorig

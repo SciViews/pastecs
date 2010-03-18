@@ -7,6 +7,9 @@
 \alias{print.escouf}
 \alias{print.summary.escouf}
 \alias{summary.escouf}
+
+\encoding{latin1}
+
 \title{ Choose variables using the Escoufier's equivalent vectors method }
 \description{
   Calculate equivalent vectors sensu Escoufier, that is, most significant variables from a multivariate data frame according to a principal component analysis (variables that are most correlated with the principal axes). This method is useful mainly for physical or chemical data where simply summarizing them with a PCA does not always gives easily interpretable principal axes.

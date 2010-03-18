@@ -1,5 +1,8 @@
 \name{first}
 \alias{first}
+
+\encoding{latin1}
+
 \title{ Get the first element of a vector }
 \description{
   Extract the first element of a vector. Useful for the \code{turnogram()} function

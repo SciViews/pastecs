@@ -1,5 +1,8 @@
 \name{stat.desc}
 \alias{stat.desc}
+
+\encoding{latin1}
+
 \title{ Descriptive statistics on a data frame or time series }
 \description{
   Compute a table giving various descriptive statistics about the series in a data frame or in a single/multiple time series

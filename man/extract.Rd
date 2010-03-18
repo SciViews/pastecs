@@ -1,5 +1,8 @@
 \name{extract}
 \alias{extract}
+
+\encoding{latin1}
+
 \title{ Extract a subset of the original dataset }
 \description{
   `extract' is a generic function for extracting a part of the original dataset according to an analysis...)

@@ -3,12 +3,7 @@ function(x, max.dist=length(x)/3, plotit=TRUE, vario.data=NULL) {
 	if (is.null(vario.data)) {	# Calculate variogram
 		call <- match.call()
 		data <- deparse(substitute(x))
-		if (exists("is.R") && is.function(is.R) && is.R()) {	# We are in R
-			# Now done with Depends: field require(stats)
-			x <- as.ts(x)
-		} else {												# We are in S+
-			x <- as.rts(x)
-		}
+		x <- as.ts(x)
 		n <- length(x)
 		if (n < 10) # Need at least 10 data
 			stop("There must be at least 10 observations in the series")
