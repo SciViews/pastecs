@@ -1,5 +1,8 @@
 \name{tseries}
 \alias{tseries}
+
+\encoding{latin1}
+
 \title{ Convert a 'regul' or a 'tsd'  object into a time series }
 \description{
   Regulated series contained in a 'regul' object or components issued from a time series decomposition with 'tsd' are extracted from their respective object and converted into uni- or multivariate regular time series ('rts' objects in Splus and 'ts' objects in \R)

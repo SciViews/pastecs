@@ -1,6 +1,9 @@
 \name{local.trend}
 \alias{local.trend}
 \alias{identify.local.trend}
+
+\encoding{latin1}
+
 \title{ Calculate local trends using cumsum }
 \description{
   A simple method using cumulated sums that allows to detect changes in the tendency in a time series

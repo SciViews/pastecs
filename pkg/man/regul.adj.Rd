@@ -1,5 +1,8 @@
 \name{regul.adj}
 \alias{regul.adj}
+
+\encoding{latin1}
+
 \title{ Adjust regulation parameters }
 \description{
   Calculate and plot an histogram of the distances between interpolated observations in a regulated time series and closest observations in the initial irregular time series. This allows to optimise the \code{tol} parameter

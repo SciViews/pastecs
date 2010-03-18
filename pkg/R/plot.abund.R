@@ -23,11 +23,7 @@ function(x, n=x$n, lvert=TRUE, lvars=TRUE, lcol=2, llty=2, all=TRUE, dlab=c("cum
 			if (Lvert==TRUE)		# We draw a vertical line
 				lines(c(N+0.5, N+0.5), c(-10,110), lty=Llty, col=Lcol)
 			if (Lvars==TRUE) {		# We change colors of selected variables labels
-				if (exists("is.R") && is.function(is.R) && is.R()) {	# We are in R
-					axis(1, 1:N, labels=as.character(X$vr[1:N]), col.axis=Lcol)
-				} else {	# We are in S+, axis color is set by col
-					axis(1, 1:N, labels=as.character(X$vr[1:N]), col=Lcol)
-				}
+				axis(1, 1:N, labels=as.character(X$vr[1:N]), col.axis=Lcol)
 			}
 		}
 	}

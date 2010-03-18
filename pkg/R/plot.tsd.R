@@ -63,11 +63,7 @@ function (x, series=1, stack=TRUE, resid=TRUE, col=par("col"), lty=par("lty"), l
 			n <- ncol(X) - 1	
 			X <- as.ts(X[,1:n])	
 		}
-		if (exists("is.R") && is.function(is.R) && is.R()) {			# We are in R
-    		ts.plot(X, gpars=list(col=col, lty=lty, xlab=xlab, ylab=ylab, main=main))
-    	} else {														# We are in S+
-			ts.plot(X, col=col, lty=lty, xlab=xlab, ylab=ylab, main=main)	
-		}
+		ts.plot(X, gpars=list(col=col, lty=lty, xlab=xlab, ylab=ylab, main=main))
     	if (leg == TRUE) legend(lpos[1], lpos[2], labels[1:n], col=col[1:n], lty=lty[1:n])
     }
     invisible()

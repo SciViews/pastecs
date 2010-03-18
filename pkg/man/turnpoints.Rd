@@ -6,6 +6,9 @@
 \alias{print.summary.turnpoints}
 \alias{print.turnpoints}
 \alias{summary.turnpoints}
+
+\encoding{latin1}
+
 \title{ Analyze turning points (peaks or pits) }
 \description{
   Determine the number and the position of extrema (turning points, either peaks or pits) in a regular time series. Calculate the quantity of information associated to the observations in this series, according to Kendall's information theory

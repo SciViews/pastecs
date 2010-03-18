@@ -6,12 +6,7 @@ function(x, k=mean(x), plotit=TRUE, type="l", cols=1:2, ltys=2:1, xlab="Time", y
 		stop("only univariate series are allowed")
 	if (length(x) < 3)
 		stop("you need at least 3 values in the series")
-	if (exists("is.R") && is.function(is.R) && is.R()) {	# We are in R
-		# Now done with Depends: field require(stats)
-		x <- as.ts(x)
-	} else {												# We are in S+
-		x <- as.rts(x)
-	}
+	x <- as.ts(x)
 	x2 <- cumsum(x-k)
 	# put x at the same scale as x2
 	xmin <- min(x)
@@ -19,11 +14,7 @@ function(x, k=mean(x), plotit=TRUE, type="l", cols=1:2, ltys=2:1, xlab="Time", y
 	x2min <- min(x2)
 	x2max <-max(x2)
 	x <- (x - xmin) / (xmax - xmin) * (x2max - x2min) + x2min
-	if (exists("is.R") && is.function(is.R) && is.R()) {	# We are in R
-		x2.ts <- ts(x2, frequency=frequency(x), start=start(x))
-	} else {												# We are in S+
-		x2.ts <- rts(x2, frequency=frequency(x), start=start(x))
-	}
+	x2.ts <- ts(x2, frequency=frequency(x), start=start(x))
 	if (plotit == TRUE) {
 		if (length(cols) < 2) cols <- rep(cols, 2)
 		if (length(ltys) < 2) ltys <- rep(ltys, 2)

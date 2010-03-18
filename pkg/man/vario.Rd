@@ -1,5 +1,8 @@
 \name{vario}
 \alias{vario}
+
+\encoding{latin1}
+
 \title{ Compute and plot a semi-variogram }
 \description{
   Compute a classical semi-variogram for a single regular time series

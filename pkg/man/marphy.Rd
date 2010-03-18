@@ -1,5 +1,8 @@
 \name{marphy}
 \alias{marphy}
+
+\encoding{latin1}
+
 \non_function{}
 \title{ Physico-chemical records at the same stations as for marbio }
 \usage{data(marphy)}

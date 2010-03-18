@@ -10,7 +10,7 @@ function(n, k, lower.tail=TRUE, two.tailed=FALSE) {
 		ncalc <- n[OK]
 		kcalc <- k[OK]
 		rescalc <- rep(0, length(ncalc))
-		Norm <- (ncalc > 50)
+		Norm <- (ncalc >= 50)
 		if (sum(Norm) > 0) {
 			# Normal approximation of Gleissberg distribution
 			nnorm <- ncalc[Norm]

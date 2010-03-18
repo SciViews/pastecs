@@ -1,6 +1,9 @@
 \name{daystoyears}
 \alias{daystoyears}
 \alias{yearstodays}
+
+\encoding{latin1}
+
 \title{ Convert time units from "days" to "years" or back }
 \description{
   Convert time scales. The time scale "days" corresponds to 1 unit per day. The time scale "years" uses 1 unit for 1 year. It is used in any analysis that requires seasonal decomposition and/or elimination. 

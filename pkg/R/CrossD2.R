@@ -3,18 +3,12 @@ function(series, series2, lags=c(1, nrow(series)/3), step=1, plotit=TRUE, add=FA
     call <- match.call()
 	data1 <- deparse(substitute(series))
 	data2 <- deparse(substitute(series2))
-	if (exists("is.R") && is.function(is.R) && is.R()) {	# We are in R
-		# Now done with Depends: field require(stats)
-		if (is.null(class(series)) || class(series)[1] != "mts")
-			stop("series must be a multiple regular time series object")
-		if (is.null(class(series2)) || class(series2)[1] != "mts")
-			stop("series2 must be a multiple regular time series object")
-		
-		Unit <- attr(series, "units")
-	} else {
-		# Rem: cannot test if these are multiple time series
-		Unit <- attr(attr(series, "tspar"), "units")
-	}
+	if (is.null(class(series)) || class(series)[1] != "mts")
+		stop("series must be a multiple regular time series object")
+	if (is.null(class(series2)) || class(series2)[1] != "mts")
+		stop("series2 must be a multiple regular time series object")
+
+	Unit <- attr(series, "units")
 	if (nrow(series) != nrow(series2))
 		stop("series and series2 must have same row number")
 	if (ncol(series) != ncol(series2))

@@ -14,8 +14,6 @@ function(x, y=NULL, frequency=12, units="years", datemin=NULL, dateformat="m/d/Y
 		x <- as.vector(x)
 		y <- as.vector(y)
 	} else {		# We must have a time series in x
-		# Require a library in R
-		# Now done with Depends: field if (exists("is.R") && is.function(is.R) && is.R()) require(stats)
 		if (!is.tseries(x))
 			stop("x must be a regular time series if y is not provided")
 		y <- as.vector(x)

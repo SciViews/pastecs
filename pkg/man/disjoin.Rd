@@ -1,5 +1,8 @@
 \name{disjoin}
 \alias{disjoin}
+
+\encoding{latin1}
+
 \title{ Complete disjoined coded data (binary coding) }
 \description{
   Transform a factor in separate variables (one per level) with a binary code (0 for absent, 1 for present) in each variable
@@ -16,7 +19,7 @@ disjoin(x)
 \value{
   a matrix containing the data with binary coding
 }
-\references{ 
+\references{
 Fromentin J.-M., F. Ibanez & P. Legendre, 1993. \emph{A phytosociological method for interpreting plankton data.} Mar. Ecol. Prog. Ser., 93:285-306.
 
 Gebski, V.J., 1985. \emph{Some properties of splicing when applied to non-linear smoothers.} Comput. Stat. Data Anal., 3:151-157.

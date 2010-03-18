@@ -1,5 +1,8 @@
 \name{regspline}
 \alias{regspline}
+
+\encoding{latin1}
+
 \title{ Regulation of a time series using splines }
 \description{
   Transform an irregular time series in a regular time series, or fill gaps in regular time series using splines

@@ -2,13 +2,8 @@
 function(x, type="multiplicative", trend=FALSE) {			# Only the multiplicative model is allowed. Use loess for an additive seasonal decomposition
 	# But here we also offer the possibility of using an additive model
 	call <- match.call()
-	if (exists("is.R") && is.function(is.R) && is.R()) {	# We are in R
-		# Now done with Depends: field require(stats)
-		x <- as.ts(x)
-	} else {												# We are in S+
-		x <- as.rts(x)
-	}
-	if (is.matrix(x) && ncol(x) != 1) 
+	x <- as.ts(x)
+	if (is.matrix(x) && ncol(x) != 1)
 		stop("only univariate series are allowed")
 	# Check the type argument
 	TYPES <- c("additive", "multiplicative")
@@ -26,11 +21,7 @@ function(x, type="multiplicative", trend=FALSE) {			# Only the multiplicative mo
 	# create our own specs component
 	specs <- list(method="census", type=type)
 	# we recuperate units from x
-	if (exists("is.R") && is.function(is.R) && is.R()) {	# We are in R
-		units <- attr(x, "units")
-	} else {
-		units <- attr(attr(x, "tspar"), "units")
-	}
+	units <- attr(x, "units")
 	# perform filtering
 	n <- length(x)
 	period <- frequency(x)
@@ -191,34 +182,18 @@ function(x, type="multiplicative", trend=FALSE) {			# Only the multiplicative mo
 			Amp <- sum(abs(I1[2:n] - I1[1:(n-1)]))/(n-1)
 
 			# Concatenate series
-			if (exists("is.R") && is.function(is.R) && is.R()) {	# We are in R
-				if (trend == FALSE) {
-					S <- as.ts(S)
-					tsp(S) <- tsp(CI)
-					series <- ts.union(CI, S/100)
-					dimnames(series)[[2]] <- c("deseasoned", "seasonal")
-				} else {
-					S <- as.ts(S)
-					tsp(S) <- tsp(I)
-					C <- as.ts(C)
-					tsp(C) <- tsp(I)
-					series <- ts.union(C, S/100, I/100)
-					dimnames(series)[[2]] <- c("trend", "seasonal", "residuals")
-				}
-			} else{													# We are in S+
-				if (trend == FALSE) {
-					S <- as.rts(S)
-					tspar(S) <- tspar(CI)
-					series <- ts.union(CI, S/100)
-					dimnames(series)[[2]] <- c("deseasoned", "seasonal")
-				} else {
-					S <- as.rts(S)
-					tspar(S) <- tspar(I)
-					C <- as.rts(C)
-					tspar(C) <- tspar(I)
-					series <- ts.union(C, S/100, I/100)
-					dimnames(series)[[2]] <- c("trend", "seasonal", "residuals")
-				}
+			if (trend == FALSE) {
+				S <- as.ts(S)
+				tsp(S) <- tsp(CI)
+				series <- ts.union(CI, S/100)
+				dimnames(series)[[2]] <- c("deseasoned", "seasonal")
+			} else {
+				S <- as.ts(S)
+				tsp(S) <- tsp(I)
+				C <- as.ts(C)
+				tsp(C) <- tsp(I)
+				series <- ts.union(C, S/100, I/100)
+				dimnames(series)[[2]] <- c("trend", "seasonal", "residuals")
 			}
 		}
 	}

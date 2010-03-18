@@ -34,7 +34,7 @@ function(x, basic=FALSE, desc=FALSE) {
 				xpos <- x[x>0]
 				if (length(xpos)==0) {	# No positive values!
 					# If at least one zero, everything is 0, else everything is NA
-					if (NbrNull>0) {
+					if (Nbrnull>0) {
 						PosMedian <- 0; PosMean <- 0; PosVar <- 0; PosStdDev <- 0; GeoMean <- 0
 					} else {
 						PosMedian <- NA; PosMean <- NA; PosVar <- NA; PosStdDev <- NA; GeoMean <- NA 

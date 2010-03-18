@@ -1,11 +1,6 @@
 "decevf" <-
 function(x, type="additive", lag=5, axes=1:2) {
-	call <- match.call()
-	if (exists("is.R") && is.function(is.R) && is.R()) {	# We are in R
-		x <- as.ts(x)
-	} else {												# We are in S+
-		x <- as.rts(x)
-	}
+	x <- as.ts(x)
 	if (is.matrix(x) && ncol(x) != 1) 
 		stop("only univariate series are allowed")
 	if (!is.numeric(axes) || any(axes <= 0))
@@ -26,22 +21,10 @@ function(x, type="additive", lag=5, axes=1:2) {
 	# create our own specs component
 	specs <- list(method="evf", type=type, lag=lag, axes=axes)
 	# we recuperate units from x
-	if (exists("is.R") && is.function(is.R) && is.R()) {	# We are in R
-		units <- attr(x, "units")
-	} else {
-		units <- attr(attr(x, "tspar"), "units")
-	}
+	units <- attr(x, "units")
 	# perform filtering
-	if (exists("is.R") && is.function(is.R) && is.R()) { # We are in R
-		# Now done with Depends: field require(stats)
-		# Create the matrix with lagged series from 0 to lag
-		xlagmat <- embed(x, lag)
-	} else {	# We are in S+
-		x2 <- as.vector(x)
-		n <- length(x2)
-		m <- n - lag + 1
-		xlagmat <- matrix(x2[1:m + rep(lag:1, rep(m, lag)) - 1], m)
-	}
+	# Create the matrix with lagged series from 0 to lag
+	xlagmat <- embed(x, lag)
 	# Perform a pca decomposition of this matrix
 	x.pca <- princomp(xlagmat)
 	# Rotated vectors are obtained by:
@@ -60,16 +43,7 @@ function(x, type="additive", lag=5, axes=1:2) {
 		xmat.recalc[1:n+(lag-i), i] <- xlagmat.recalc[,i]
 	# perform column means to get filtered time series
 	filtered <- apply(xmat.recalc, 1, mean, na.rm=TRUE)
-	if (exists("is.R") && is.function(is.R) && is.R()) { # We are in R
-		filtered <- ts(filtered, start=start(x), frequency=frequency(x))
-	} else { # We are in S+
-		filtered <- rts(filtered, start=start(x), frequency=frequency(x))
-	}
-	if (exists("is.R") && is.function(is.R) && is.R()) {	# We are in R
-		# Now done with Depends: field require(stats)
-	} else {		# We are in S+
-		attr(filtered, "tspar") <- attr(x, "tspar") 	# This is to avoid a warning under S+
-	}
+	filtered <- ts(filtered, start=start(x), frequency=frequency(x))
 	# Calculate residuals
 	if (type == "additive") {
 		residuals <- x - filtered

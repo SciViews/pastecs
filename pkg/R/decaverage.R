@@ -1,13 +1,9 @@
 "decaverage" <-
 function(x, type="additive", order=1, times=1, sides=2, ends="fill", weights=NULL) {
 	call <- match.call()
-	if (exists("is.R") && is.function(is.R) && is.R()) {	# We are in R
-		x <- as.ts(x)
-	} else {												# We are in S+
-		x <- as.rts(x)
-	}
-	if (is.matrix(x) && ncol(x) != 1) 
-	       stop("only univariate series are allowed")
+	x <- as.ts(x)
+	if (is.matrix(x) && ncol(x) != 1)
+	    stop("only univariate series are allowed")
 	if (!is.numeric(times) || times <= 0)
 		stop("times must be a positive number")
 	if (!is.numeric(sides) || (sides != 1 & sides != 2))
@@ -64,11 +60,7 @@ function(x, type="additive", order=1, times=1, sides=2, ends="fill", weights=NUL
 	# create our own specs component
 	specs <- list(method="average", type=type, order=order, times=times, sides=sides, ends=ends, weights=weights)
 	# we recuperate units from x
-	if (exists("is.R") && is.function(is.R) && is.R()) {	# We are in R
-		units <- attr(x, "units")
-	} else {
-		units <- attr(attr(x, "tspar"), "units")
-	}
+	units <- attr(x, "units")
 	# We define functions that pads elements at end of the vector
 	padmean <- function(x, order, sides) {
 		n <- length(x)
@@ -125,8 +117,6 @@ function(x, type="additive", order=1, times=1, sides=2, ends="fill", weights=NUL
 		res
 	}
 	n <- length(x)
-	if (exists("is.R") && is.function(is.R) && is.R())	# We are in R
-		# Now done with Depends: field require(stats)
 	filtered <- x						# We don't change the initial series, but a copy of it
 	filt <- weights/sum(weights)		# Scale down weights
 	for (i in 1:times) {
@@ -141,15 +131,9 @@ function(x, type="additive", order=1, times=1, sides=2, ends="fill", weights=NUL
 		# perform filtering
 		filtered <- filter(padx$x, filter=filt, method="convolution", sides=sides, circular=circular)
 		# Now we have to cut the vector x according to cut (we don't use the function window for that since we didn't changed tspar!)
-		if (exists("is.R") && is.function(is.R) && is.R()) {	# We are in R
-			filtered <- as.ts(as.vector(filtered)[cut[1]:cut[2]])
-			tsp(filtered) <- tsp(x)
-			filtered<- as.ts(filtered)
-		} else {												# We are in S+
-			filtered <- as.rts(as.vector(filtered)[cut[1]:cut[2]])
-			tspar(filtered) <- tspar(x)
-			filtered <- as.rts(filtered)
-		}
+		filtered <- as.ts(as.vector(filtered)[cut[1]:cut[2]])
+		tsp(filtered) <- tsp(x)
+		filtered<- as.ts(filtered)
 	}
 	# Calculate residuals
 	if (type == "additive") {

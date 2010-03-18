@@ -1,5 +1,8 @@
 \name{marbio}
 \alias{marbio}
+
+\encoding{latin1}
+
 \non_function{}
 \title{ Several zooplankton taxa measured across a transect }
 \usage{data(marbio)}

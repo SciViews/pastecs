@@ -1,5 +1,8 @@
 \name{bnr}
 \alias{bnr}
+
+\encoding{latin1}
+
 \non_function{}
 \title{ A data frame of 163 benthic species measured across a transect }
 \usage{data(bnr)}

@@ -7,6 +7,9 @@
 \alias{print.tsd}
 \alias{specs.tsd}
 \alias{summary.tsd}
+
+\encoding{latin1}
+
 \title{ Decomposition of one or several regular time series using various methods }
 \description{
   Use a decomposition method to split the series into two or more components. Decomposition methods are either series filtering/smoothing (difference, average, median, evf), deseasoning (loess) or model-based decomposition (reg, i.e., regression).

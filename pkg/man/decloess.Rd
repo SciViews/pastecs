@@ -1,5 +1,8 @@
 \name{decloess}
 \alias{decloess}
+
+\encoding{latin1}
+
 \title{ Time series decomposition by the LOESS method }
 \description{
   Compute a seasonal decomposition of a regular time series using a LOESS method (local polynomial regression)

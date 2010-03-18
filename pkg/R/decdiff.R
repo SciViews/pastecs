@@ -1,11 +1,7 @@
 "decdiff" <-
 function(x, type="additive", lag=1, order=1, ends="fill") {
 	call <- match.call()
-	if (exists("is.R") && is.function(is.R) && is.R()) {	# We are in R
-		x <- as.ts(x)
-	} else {												# We are in S+
-		x <- as.rts(x)
-	}
+	x <- as.ts(x)
 	if (is.matrix(x) && ncol(x) != 1) 
 		stop("only univariate series are allowed")
 	if (!is.numeric(lag) || lag <= 0)
@@ -38,21 +34,11 @@ function(x, type="additive", lag=1, order=1, ends="fill") {
 	# create our own specs component
 	specs <- list(method="diff", type=type, lag=lag, order=order, ends=ends)
 	# we recuperate units from x
-	if (exists("is.R") && is.function(is.R) && is.R()) {	# We are in R
-		units <- attr(x, "units")
-	} else {
-		units <- attr(attr(x, "tspar"), "units")
-	}
-	if (exists("is.R") && is.function(is.R) && is.R())	# We are in R
-		# Now done with Depends: field require(stats)
+	units <- attr(x, "units")
 	# The next function add enough data to the left (either NA or the mean of first few values)
 	# to obtain a series of the same length as x after difference
 	padleft <- function(x, Lag, fill) {
-		if (exists("is.R") && is.function(is.R) && is.R()) {	# We are in R
-			x <- window(x, start=start(lag(x, Lag)), end=end(x), extend=TRUE)
-		} else {												# We are in S+
-			x <-  ts.union(lag(x, Lag), x)[,2]
-		}
+		x <- window(x, start=start(lag(x, Lag)), end=end(x), extend=TRUE)
 		if (fill == TRUE)			# We fill padded data with the mean of first few values
 			x[1:Lag] <- mean(x[(1:Lag)+Lag], na.rm=TRUE)
 		x

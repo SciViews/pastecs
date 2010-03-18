@@ -1,5 +1,8 @@
 \name{decreg}
 \alias{decreg}
+
+\encoding{latin1}
+
 \title{ Time series decomposition using a regression model }
 \description{
   Providing values coming from a regression on the original series, a \code{tsd} object is created using the original series, the regression model and the residuals

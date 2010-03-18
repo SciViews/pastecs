@@ -1,5 +1,8 @@
 \name{regul.screen}
 \alias{regul.screen}
+
+\encoding{latin1}
+
 \title{ Test various regulation parameters }
 \description{
   Seek for the best combination of the number of observation, the interval between two successive observation and the position of the first observation in the regulated time series to match as much observations of the initial series as possible

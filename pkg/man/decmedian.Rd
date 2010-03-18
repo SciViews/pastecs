@@ -1,5 +1,8 @@
 \name{decmedian}
 \alias{decmedian}
+
+\encoding{latin1}
+
 \title{ Time series decomposition using a running median }
 \description{
   This is a nonlinear filtering method used to smooth, but also to segment a time series. The isolated peaks and pits are leveraged by this method.
@@ -18,7 +21,7 @@ decmedian(x, type="additive", order=1, times=1, ends="fill")
 \value{
   a 'tsd' object
 }
-\references{ 
+\references{
 Gebski, V.J., 1985. \emph{Some properties of splicing when applied to non-linear smoothers.} Comp. Stat. Data Anal., 3:151-157.
 
 Philips, L. & R. Blomme, 1973. \emph{Analyse chronologique. Université Catholique de Louvain.} Vander ed. 339 pp.

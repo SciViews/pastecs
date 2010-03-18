@@ -3,14 +3,9 @@ function(series, intervals=c(1, length(series)/5), step=1, complete=FALSE, two.t
 	call <- match.call()
 	data <- deparse(substitute(series))
 	fun <- deparse(substitute(FUN))
-	if (exists("is.R") && is.function(is.R) && is.R()) {	# We are in R
-		if (is.null(class(series)) || class(series) != "ts")
-			stop("series must be a single regular time series")
-		Unit <- attr(series, "units")
-	} else {												# We are in Splus
-		# Cannot test if this is a time series in Splus
-		Unit <- attr(attr(series, "tspar"), "units")
-	}
+	if (is.null(class(series)) || class(series) != "ts")
+		stop("series must be a single regular time series")
+	Unit <- attr(series, "units")
 	UnitTxt <- GetUnitText(series)
 	# Determine if there are many successive sequences of zeros
 	X <- as.vector(series)

@@ -1,5 +1,8 @@
 \name{last}
 \alias{last}
+
+\encoding{latin1}
+
 \title{ Get the last element of a vector }
 \description{
   Extract the last element of a vector. Useful for the \code{turnogram()} function

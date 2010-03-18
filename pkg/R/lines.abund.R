@@ -12,11 +12,7 @@ function(x, n=x$n, lvert=TRUE, lvars=TRUE, col=2, lty=2, ...) {
 			if (Lvert==TRUE)		# We draw a vertical line
 				lines(c(N+0.5, N+0.5), c(-10,110), lty=Lty, col=Col)
 			if (Lvars==TRUE)		# We change colors of selected variables labels
-				if (exists("is.R") && is.function(is.R) && is.R()) {	# We are in R
-					axis(1, 1:N, labels=as.character(X$vr[1:N]), col.axis=Col)
-				} else {	# We are in S+, axis color is set by col
-					axis(1, 1:N, labels=as.character(X$vr[1:N]), col=Col)
-				}
+				axis(1, 1:N, labels=as.character(X$vr[1:N]), col.axis=Col)
 		}
 	}
 	invisible(abund.lines(x, n, lvert, lvars, col, lty, ...))

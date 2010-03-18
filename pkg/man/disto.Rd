@@ -1,5 +1,8 @@
 \name{disto}
 \alias{disto}
+
+\encoding{latin1}
+
 \title{ Compute and plot a distogram }
 \description{
   A distogram is an extension of the variogram to a multivariate time-series. It computes, for each observation (with a constant interval h between each observation), the euclidean distance normated to one (chord distance)

@@ -1,5 +1,8 @@
 \name{GetUnitText}
 \alias{GetUnitText}
+
+\encoding{latin1}
+
 \title{ Format a nice time units for labels in graphs }
 \description{
   This is an internal function called by some \code{plot()} methods. Considering the time series 'units' attribute and the frequency of the observations in the series, the function returns a string with a pertinent time unit. For instance, if the unit is 'years' and the frequency is 12, then data are monthly sampled and \code{GetUnitText()} returns the string "months"

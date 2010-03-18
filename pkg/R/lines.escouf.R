@@ -13,11 +13,7 @@ function(x, level=x$level, lhorz=TRUE, lvert=TRUE, lvars=TRUE, col=2, lty=2, ...
 			if (Lvert==TRUE)		# We draw also a vertical line
 				lines(c(nvars+0.5, nvars+0.5), c(-0.1,1.5), lty=Lty, col=Col)
 			if (Lvars==TRUE)		# We change also colors of selected variables labels
-				if (exists("is.R") && is.function(is.R) && is.R()) {	# We are in R
-					axis(1, 1:nvars, labels=as.character(X$vr[1:nvars]), col.axis=Col)
-				} else {	# We are in S+, axis color is set by col
-					axis(1, 1:nvars, labels=as.character(X$vr[1:nvars]), col=Col)
-				}
+				axis(1, 1:nvars, labels=as.character(X$vr[1:nvars]), col.axis=Col)
 		}
 	}
 	invisible(escouf.lines(x, level, lhorz, lvert, lvars, col, lty, ...))

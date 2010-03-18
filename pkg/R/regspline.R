@@ -15,22 +15,12 @@ function (x, y=NULL, xmin=min(x), n=length(x), deltat=(max(x)-min(x))/(n-1), rul
 	srt <- sort.list(x)
 	x <- x[srt]
 	y <- y[srt]
-	# the call to the function spline() is different in S+ and in R!
-	if (exists("is.R") && is.function(is.R) && is.R()) {	# We are in R
-		if (periodic == TRUE) {
-			res <- spline(x, y, n=n, method="periodic", xmin=xmin, xmax=xmax)
-		} else {
-			res <- spline(x, y, n=n, method="fmm", xmin=xmin, xmax=xmax)
-		}
-		# Rem: there is also a method="natural" in R, but we don't use it here!
-	} else {												# We are in S+
-		# In S+ the spline function does not really care of xmin, xmax and n!!!
-		# So, we need to interpolate a lot more points, and use approx() in it
-		# To get the regulated vector we really requested
-		restmp <- spline(x, y, n=50*n, periodic=periodic, xmin=xmin, xmax=xmax)
-		xout <- 0:(n-1)*deltat + xmin
-		res <- approx(restmp$x, restmp$y, xout, method="linear", rule=2)
+	if (periodic == TRUE) {
+		res <- spline(x, y, n=n, method="periodic", xmin=xmin, xmax=xmax)
+	} else {
+		res <- spline(x, y, n=n, method="fmm", xmin=xmin, xmax=xmax)
 	}
+	# Rem: there is also a method="natural" in R, but we don't use it here!
 	# The spline interpolations sometimes return interpolated values lower than the minimum
 	# or higher than the maximum. This is eliminated by assigning them minimum or maximum value
 	# For instance, a regulated count of species could return négative values => set the the

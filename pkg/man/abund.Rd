@@ -7,6 +7,9 @@
 \alias{print.abund}
 \alias{print.summary.abund}
 \alias{summary.abund}
+
+\encoding{latin1}
+
 \title{ Sort variables by abundance }
 \description{
   Sort variables (usually species in a species x stations matrix) in function of their abundance, either in number of non-null values, or in number of individuals (in log). The \code{f} coefficient allows adjusting weight given to each of these two criteria.

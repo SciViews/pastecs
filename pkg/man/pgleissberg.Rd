@@ -1,5 +1,8 @@
 \name{pgleissberg}
 \alias{pgleissberg}
+
+\encoding{latin1}
+
 \title{ Gleissberg distribution probability }
 \description{
   The Gleissberg distribution gives the probability to have k extrema in a series of n observations. This distribution is used in the turnogram to determine if monotony indices are significant (see \code{turnogram()})
