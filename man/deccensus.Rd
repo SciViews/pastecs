@@ -42,7 +42,8 @@ Shiskin, J. & H. Eisenpress, 1957. \emph{Seasonal adjustment by electronic compu
 \examples{
 data(releve)
 # Get regulated time series with a 'years' time-scale
-rel.regy <- regul(releve$Day, releve[3:8], xmin=6, n=87, units="daystoyears", frequency=24, tol=2.2, methods="linear", datemin="21/03/1989", dateformat="d/m/Y")
+rel.regy <- regul(releve$Day, releve[3:8], xmin=6, n=87, units="daystoyears",
+    frequency=24, tol=2.2, methods="linear", datemin="21/03/1989", dateformat="d/m/Y")
 rel.ts <- tseries(rel.regy)
 # We must have complete cycles to allow using deccensus()
 start(rel.ts)
