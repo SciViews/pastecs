@@ -7,12 +7,13 @@
 \description{
   Calculate and plot an histogram of the distances between interpolated observations in a regulated time series and closest observations in the initial irregular time series. This allows to optimise the \code{tol} parameter
 }
-\synopsis{
-regul.adj(x, xmin=min(x), frequency=NULL, deltat=(max(x, na.rm = TRUE) - min(x, na.rm = TRUE))/(length(x) - 1), tol=deltat, tol.type="both", nclass=50, col=c(4, 5, 2), xlab=paste("Time distance"), ylab=paste("Frequency"), main="Number of matching observations", plotit=TRUE, ...)
-}
+
 \usage{
-regul.adj(x, xmin=min(x), frequency=NULL, deltat, tol=deltat,
-        tol.type="both", nclass=50, col=c(4, 5, 2), plotit=TRUE, \dots)
+regul.adj(x, xmin=min(x), frequency=NULL,
+     deltat=(max(x, na.rm = TRUE) - min(x, na.rm = TRUE))/(length(x) - 1),
+     tol=deltat, tol.type="both", nclass=50, col=c(4, 5, 2),
+     xlab=paste("Time distance"), ylab=paste("Frequency"),
+     main="Number of matching observations", plotit=TRUE, \dots)
 }
 \arguments{
   \item{x}{ a vector with times corresponding to the observations in the irregular initial time series }
@@ -23,6 +24,9 @@ regul.adj(x, xmin=min(x), frequency=NULL, deltat, tol=deltat,
   \item{tol.type}{ the type of window to use for the time-tolerance: \code{"left"}, \code{"right"}, \code{"both"} (by default) or \code{"none"}. If \code{tol.type="left"}, corresponding \code{x} values are seeked in a window ]xregul-tol, xregul]. If \code{tol.type="right"}, they are seeked in the window [xregul, xregul+tol[. If \code{tol.type="both"}, then they are seeked in the window ]xregul-tol, xregul+tol]. If several observations are in this window, the closest one is used. Finally, if \code{tol.type="none"}, then \emph{all} observations in the regulated time series are interpolated (even if exactly matching observations exist!) }
   \item{nclass}{ the number of classes to compute in the histogram. This is indicative, and will be adjusted by the algorithm to produce a nicely-formatted histogram. The default value is \code{nclass=50}. It is acceptable in many cases, but if the histogram is not correct, try a larger value }
   \item{col}{ the three colors to use to represent respectively the fist bar (exact coincidence), the middle bars (coincidence in a certain tolerance window) and the last bar (values always interpolated). By default, \code{col=c(4,5,2)} }
+  \item{xlab}{ the label of the x-axis }
+  \item{ylab}{ the label of the y-axis }
+  \item{main}{ the main title of the graph}
   \item{plotit}{ if \code{plotit=TRUE} then the histogram is plotted. Otherwise, it is only calculated }
   \item{\dots}{ additional graph parameters for the histogram }
 }

@@ -10,22 +10,20 @@
 \description{
 Statistical parameters are not constant along a time series: mean or variance can vary each year, or during particular intervals (radical or smooth changes due to a pollution, a very cold winter, a shift in the system behaviour, etc. Sliding statistics offer the potential to describe series on successive blocs defined along the space-time axis
 }
-\synopsis{
-stat.slide(x, y, xcut=NULL, xmin=min(x), n=NULL, frequency=NULL, deltat=1/frequency, basic=FALSE, desc=FALSE, norm=FALSE, pen=FALSE, p=0.95)
-lines.stat.slide(x, stat="mean", col=3, lty=1, ...)
-plot.stat.slide(x, stat="mean", col=c(1, 2), lty=c(par("lty"), par("lty")), leg=FALSE, llab=c("series", stat), lpos=c(1.5, 10), xlab="time", ylab="y", main=paste("Sliding statistics"), ...)
-print.stat.slide(x, ...)
-}
+
 \usage{
 stat.slide(x, y, xcut=NULL, xmin=min(x), n=NULL, frequency=NULL,
         deltat=1/frequency, basic=FALSE, desc=FALSE, norm=FALSE,
         pen=FALSE, p=0.95)
-\method{plot}{stat.slide}(statsl, stat="mean", col=c(1, 2), lty=c(par("lty"), par("lty")),
-        leg=FALSE, llab=c("series", stat), lpos=c(1.5, 10), \dots)
-\method{lines}{stat.slide}(statsl, stat="mean", col=3, lty=1, \dots)
+\method{print}{stat.slide}(x, \dots) 
+\method{plot}{stat.slide}(x, stat="mean", col=c(1, 2), lty=c(par("lty"), par("lty")),
+        leg=FALSE, llab=c("series", stat), lpos=c(1.5, 10), xlab="time", ylab="y",
+        main=paste("Sliding statistics"), \dots)
+\method{lines}{stat.slide}(x, stat="mean", col=3, lty=1, \dots)
 }
 \arguments{
-  \item{x}{ a vector with time data }
+  \item{x}{ a vector with time data for \code{stat.slide()}, or a 'stat.slide' object
+    for the methods }
   \item{y}{ a vector with observation at corresponding times }
   \item{xcut}{ a vector with the position in time of the breaks between successive blocs. \code{xcut=NULL} by default. In the later case, a vector with equally spaced blocs is constructed using \code{xmin}, \code{n} and \code{frequency} or \code{deltat}. If a value is provided for \code{xcut}, then it supersedes all these other parameters }
   \item{xmin}{ the minimal value in the time-scale to use for constructing a vector of equally spaced breaks }
@@ -37,14 +35,16 @@ stat.slide(x, y, xcut=NULL, xmin=min(x), n=NULL, frequency=NULL,
   \item{norm}{ do we have to return normal distribution statistics (by default, it is FALSE)? the skewness coefficient g1 (skewness), its significant criterium (skew.2SE, that is, g1/2.SEg1; if skew.2SE > 1, then skewness is significantly different than zero), kurtosis coefficient g2 (kurtosis), its significant criterium (kurt.2SE, same remark than for skew.2SE), the statistic of a Shapiro-Wilk test of normality (normtest.W) and its associated probability (normtest.p) }
   \item{pen}{ do we have to return Pennington and other associated statistics (by default, it is FALSE)? pos.median, pos.mean, pos.var, pos.std.dev, respectively the median, the mean, the standard deviation and the variance, considering only non-null values; geo.mean, the geometric mean that is, the exponential of the mean of the logarithm of the observations, excluding null values. pen.mean, pen.var, pen.std.dev, pen.mean.var, respectively the mean, the variance, the standard deviation and the variance of the mean after Pennington's estimators (see \code{pennington()}) }
   \item{p}{ the probability level to use to calculate the confidence interval on the mean (CI.mean). By default, \code{p=0.95} }
-  \item{statsl}{ a 'stat.slide' object, as returned by the function \code{stat.slide()} }
   \item{stat}{ the statistic to plot on the graph. You can use "min", "max", "median", "mean" (by default), "pos.median", "pos.mean", "geo.mean" and "pen.mean". The other statistics cannot be superposed on the graph of the series in the current version of the function }
   \item{col}{ the colors to use to plot the initial series and the statistics, respectively. By default, \code{col=c(1,2)} }
   \item{lty}{ the style to use to draw the original series and the statistics. The default style is used if this argument is not provided }
   \item{leg}{ if \code{leg=TRUE}, a legend box is drawn on the graph }
   \item{llab}{ the labels to use for the legend. By default, it is "series" and the corresponding statistics provided in \code{stat}, respectively }
   \item{lpos}{ the position of the top-left corner (x,y) of the legend box in the graph coordinates. By default \code{lpos=c(1.5,10)} }
-  \item{\dots}{ additional graph parameters }
+  \item{xlab}{ the label of the x-axis }
+  \item{ylab}{ the label of the y-axis }
+  \item{main}{ the main title of the graph}
+  \item{\dots}{ additional parameters }
 }
 \details{
   Available statistics are the same as for \code{stat.desc()} and \code{stat.pen()}. The Shapiro-Wilk test of normality is not available yet in Splus and it returns 'NA' in this environment. If not a priori known, successive blocs can be identified using either \code{local.trend()} or \code{decmedian()} (see respective functions for further details)

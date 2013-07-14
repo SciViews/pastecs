@@ -8,10 +8,7 @@
 \description{
   Convert time scales. The time scale "days" corresponds to 1 unit per day. The time scale "years" uses 1 unit for 1 year. It is used in any analysis that requires seasonal decomposition and/or elimination. 
 }
-\synopsis{
-daystoyears(x, datemin=NULL, dateformat="m/d/Y")
-yearstodays(x, xmin=NULL)
-}
+
 \usage{
 daystoyears(x, datemin=NULL, dateformat="m/d/Y")
 yearstodays(x, xmin=NULL)
