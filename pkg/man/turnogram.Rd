@@ -13,28 +13,27 @@
 \description{
 The turnogram is the variation of a monotony index with the observation scale (the number of data per time unit). A monotony index indicates if the series has more or less erratic variations than a pure random succession of independent observations. Since a time series almost always has autocorrelation, it is expected to be more monotonous than a purely random series. The monotony index is a way to quantify the density of information beared by a time series. The turnogram determines at which observation scale this density of information is maximum. It is also the scale that optimize the sampling effort (best compromise between less samples versus more information).
 }
-\synopsis{
-turnogram(series, intervals=c(1, length(series)/5), step=1, complete=FALSE, two.tailed=TRUE, FUN=mean, plotit=TRUE, level=0.05, lhorz=TRUE, lvert=FALSE, xlog=TRUE)
-extract.turnogram(e, n, level=e$level, FUN=e$fun, drop=0, ...)
-identify.turnogram(x, lvert=TRUE, col=2, lty=2, ...)
-plot.turnogram(x, level=0.05, lhorz=TRUE, lvert=TRUE, lcol=2, llty=2, xlog=TRUE, xlab=paste("interval (", x$units.text, ")", sep=""), ylab="I (bits)", main=paste(x$type, "turnogram for:", x$data), sub=paste(x$fun, "/", x$proba), ...)
-print.summary.turnogram(x, ...)
-print.turnogram(x, ...)
-summary.turnogram(object, ...)
-}
+
 \usage{
 turnogram(series, intervals=c(1, length(series)/5), step=1, complete=FALSE,
         two.tailed=TRUE, FUN=mean, plotit=TRUE, level=0.05, lhorz=TRUE,
         lvert=FALSE, xlog=TRUE)
-\method{summary}{turnogram}(turno)
-\method{plot}{turnogram}(turno, level=0.05, lhorz=TRUE, lvert=TRUE, lcol=2,
-        llty=2, xlog=TRUE, \dots)
-\method{identify}{turnogram}(turno, lvert=TRUE, \dots)
-\method{extract}{turnogram}(turno, n, level=turno$level, FUN=turno$fun, drop=0)
+\method{print}{turnogram}(x, \dots)
+\method{summary}{turnogram}(object, \dots)
+\method{print}{summary.turnogram}(x, \dots)
+\method{plot}{turnogram}(x, level=0.05, lhorz=TRUE, lvert=TRUE, lcol=2,
+        llty=2, xlog=TRUE, xlab=paste("interval (", x$units.text, ")", sep=""),
+        ylab="I (bits)", main=paste(x$type, "turnogram for:", x$data),
+        sub=paste(x$fun, "/", x$proba), \dots)
+\method{identify}{turnogram}(x, lvert=TRUE, col=2, lty=2, \dots)
+\method{extract}{turnogram}(e, n, level=e$level, FUN=e$fun, drop=0, \dots)
 }
 \arguments{
   \item{series}{ a single regular time series ('rts' object in Splus or 'ts' object in \R) }
   \item{intervals}{ the range (mini, maxi) of the intervals to calculate, i.e., to take one obervation every 'interval' one. By default, \code{intervals} ranges from 1 to the fifth of the total number of observations }
+  \item{x}{ a 'turnogram' object }
+  \item{object}{ a 'turnogram' object }
+  \item{e}{ a 'turnogram' object }
   \item{step}{ the increment used for the intervals. By defaults \code{step=1}. To limit calculation or for a first screenning with a large range in the intervals, use a higher value for \code{step} }
   \item{complete}{ if \code{complete=TRUE}, a complete turnogram is calculated, showing mean, minimal and maximal curves. If it is FALSE (by default), only a simple turnogram always starting from the first observation is calculated }
   \item{two.tailed}{ if \code{two.tailed=TRUE} (by default), the monotony index is tested with a bilateral test, otherwise, a left-sided test is used }
@@ -46,8 +45,13 @@ turnogram(series, intervals=c(1, length(series)/5), step=1, complete=FALSE,
   \item{lcol}{ the color to use to draw supplemental lines: the horizontal line indicating where the test is significant (if \code{lhorz=TRUE}) and the vertical line indicating the extraction level (if \code{lvert=TRUE}). By default, color 2 is used }
   \item{llty}{ the style for the supplemental lines. By default, style 2 is used (dashed lines) }
   \item{xlog}{ if \code{xlog=TRUE} (by default), then the x-axis is expressed in logarithms. Otherwise, a linear scale is used }
+  \item{xlab}{ the label of the x-axis }
+  \item{ylab}{ the label of the y-axis }
+  \item{main}{ the main title of the graph}
+  \item{sub}{ the subtitle of the graph}
+  \item{col}{ color to use for identified items }
+  \item{lty}{ line type to use for identified items }
   \item{\dots}{ additional optional graphic arguments }
-  \item{turno}{ a 'turnogram' object as returned by the function \code{turnogram()} }
   \item{n}{ the number of observations to take into account in the initial series. Use \code{n=NULL} (by default) to use all observations of the series }
   \item{drop}{ the number of observations to drop at the beginning of the series before proceeding with the aggregation of the data for the extracted series. By default, \code{drop=0}: no observations are dropped }
 }

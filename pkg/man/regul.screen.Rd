@@ -7,12 +7,11 @@
 \description{
   Seek for the best combination of the number of observation, the interval between two successive observation and the position of the first observation in the regulated time series to match as much observations of the initial series as possible
 }
-\synopsis{
-regul.screen(x, weight=NULL, xmin=min(x), frequency=NULL, deltat=(max(x, na.rm = TRUE) - min(x, na.rm = TRUE))/(length(x) - 1), tol=deltat/5, tol.type="both")
-}
+
 \usage{
-regul.screen(x, weight=NULL, xmin=min(x), frequency=NULL, deltat,
-        tol=deltat/5, tol.type="both")
+regul.screen(x, weight=NULL, xmin=min(x), frequency=NULL,
+    deltat=(max(x, na.rm = TRUE) - min(x, na.rm = TRUE))/(length(x) - 1),
+    tol=deltat/5, tol.type="both")
 }
 \arguments{
   \item{x}{ a vector with times corresponding to the observations in the irregular initial time series }

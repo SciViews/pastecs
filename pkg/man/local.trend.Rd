@@ -8,20 +8,20 @@
 \description{
   A simple method using cumulated sums that allows to detect changes in the tendency in a time series
 }
-\synopsis{
-  local.trend(x, k=mean(x), plotit=TRUE, type="l", cols=1:2, ltys=2:1, xlab="Time", ylab="cusum", ...)
-  identify.local.trend(x, ...)
-}
 \usage{
-local.trend(x, k=mean(x), plotit=TRUE, \dots)
-\method{identify}{local.trend}(loctrd)
+local.trend(x, k = mean(x), plotit = TRUE, type="l", cols=1:2, ltys=2:1, xlab="Time", ylab="cusum", \dots)
+\method{identify}{local.trend}(x, \dots)
 }
 \arguments{
-  \item{x}{ a regular time series (a 'rts' object under S+ or a 'ts' object under \R) }
+  \item{x}{ a regular time series (a 'ts' object) for \code{local.trend()} or a 'local.trend' object for \code{identify()} }
   \item{k}{ the reference value to substract from cumulated sums. By default, it is the mean of all observations in the series }
   \item{plotit}{ if \code{plotit=TRUE} (by default), a graph with the cumsum curve superposed to the original series is plotted }
+  \item{type}{ the type of plot (as usual notation for this argument) }
+  \item{cols}{ colors to use for original data and for the trend line }
+  \item{ltys}{ line types to use for original data and the trend line }
+  \item{xlab}{ label of the x-axis }
+  \item{ylab}{ label of the y-axis }
   \item{\dots}{ additional arguments for the graph }
-  \item{loctrd}{ a 'local.trend' object, as returned by the function \code{local.trend()} }
 }
 \details{
   With \code{local.trend()}, you can:
