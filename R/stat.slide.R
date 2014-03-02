@@ -50,7 +50,7 @@ function(x, y, xcut=NULL, xmin=min(x), n=NULL, frequency=NULL, deltat=1/frequenc
 				Res2 <- list(median=Median, mean=Mean, SE.mean=SEMean, CI.mean=CIMean, var=Var, std.dev=StdDev, coef.var=CoefVar)
 			} else Res2 <- NULL
 			if (norm==TRUE) {
-				Skew <- sum((y-mean(y))^3)/(length(y)*sqrt(var(y))^3)			# From e1071 R library
+				Skew <- sum((y-mean(y))^3)/(length(y)*sqrt(var(y))^3)			# From e1071
 				Kurt <- sum((y-mean(y))^4)/(length(y)*var(y)^2) - 3				# Idem
 				SE <- sqrt(6*Nbrval*(Nbrval-1)/(Nbrval-2)/(Nbrval+1)/(Nbrval+3))
 				# +/- sqrt(6/Nbrval) for Nbrval>100, see Sokal & Rohlf, p. 139
