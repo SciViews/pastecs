@@ -45,7 +45,7 @@ function(x, basic=TRUE, desc=TRUE, norm=FALSE, p=.95) {
 				Res2 <- list(median=Median, mean=Mean, SE.mean=SEMean, CI.mean=CIMean, var=Var, std.dev=StdDev, coef.var=CoefVar)
 			} else Res2 <- NULL
 			if (norm==TRUE) {
-				Skew <- sum((x-mean(x))^3)/(length(x)*sqrt(var(x))^3)			# From e1071 R library
+				Skew <- sum((x-mean(x))^3)/(length(x)*sqrt(var(x))^3)			# From e1071
 				Kurt <- sum((x-mean(x))^4)/(length(x)*var(x)^2) - 3				# Idem
 				SE <- sqrt(6*Nbrval*(Nbrval-1)/(Nbrval-2)/(Nbrval+1)/(Nbrval+3))
 				# +/- sqrt(6/Nbrval) for Nbrval>100, see Sokal & Rohlf, p. 139
