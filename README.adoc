@@ -1,7 +1,7 @@
 # PASTECS
 
 image:https://travis-ci.org/phgrosjean/pastecs.svg["Build Status", link="https://travis-ci.org/phgrosjean/pastecs"]
-image:https://coveralls.io/repos/phgrosjean/pastecs/badge.svg?branch=master&service=github["Coverage Status",
+image:https://coveralls.io/repos/phgrosjean/aurelhy/badge.svg?branch=master&service=github["Coverage Status",
 link="https://coveralls.io/github/phgrosjean/pastecs?branch=master"]
 image:http://www.r-pkg.org/badges/version/pastecs["CRAN Status", link="http://cran.r-project.org/package=pastecs"]
 image:https://img.shields.io/badge/license-GPL-blue.svg["State"]
