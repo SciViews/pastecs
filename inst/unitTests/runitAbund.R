@@ -32,6 +32,6 @@
 }
 
 testAbund <- function () {
-	checkTrue(TRUE, "TRUE is TRUE")
-	checkException(log("a"), "log(\"a\") raises an exception")
+	checkEquals("1:10", abund(1:10)$data, "Trivial data trial")
+	checkException(abund("a"), "abund(\"a\") raises an exception")
 }
