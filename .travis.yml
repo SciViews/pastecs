@@ -19,9 +19,9 @@ env:
    - CRAN: http://cran.rstudio.com
 
 # System dependencies for HTTP calling
-#apt_packages:
-#  - libcurl4-openssl-dev
-#  - libxml2-dev
+apt_packages:
+  - libcurl4-openssl-dev
+  - libxml2-dev
 r_binary_packages:
   - svUnit
 

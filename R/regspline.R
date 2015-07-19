@@ -23,7 +23,7 @@ function (x, y=NULL, xmin=min(x), n=length(x), deltat=(max(x)-min(x))/(n-1), rul
 	# Rem: there is also a method="natural" in R, but we don't use it here!
 	# The spline interpolations sometimes return interpolated values lower than the minimum
 	# or higher than the maximum. This is eliminated by assigning them minimum or maximum value
-	# For instance, a regulated count of species could return négative values => set the the
+	# For instance, a regulated count of species could return negative values => set the the
 	# minimum count (usually 0)
 	ymin <- min(y)
 	ymax <- max(y)
