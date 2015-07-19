@@ -24,6 +24,3 @@ URL: https://github.com/phgrosjean/pastecs
 BugReports: https://github.com/phgrosjean/pastecs/issues
 LazyData: yes
 NeedsCompilation: no
-Encoding: latin1
-
-
