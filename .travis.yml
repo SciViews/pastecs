@@ -1,0 +1,35 @@
+language: r
+
+# Be strict when checking our package
+warnings_are_errors: true
+
+# Allow for sudo commands
+sudo: required
+
+# Email notifications
+notifications:
+  email:
+    on_success: change
+    on_failure: change
+    
+    
+# Environment variables
+env:
+ global:
+   - CRAN: http://cran.rstudio.com
+
+# System dependencies for HTTP calling
+#apt_packages:
+#  - libcurl4-openssl-dev
+#  - libxml2-dev
+r_binary_packages:
+  - svUnit
+
+# Install the bleeding edge version of a package from github (eg to pick
+# up a not-yet-released bugfix)
+# readr is to read csv, tsv and fwf into R
+r_github_packages:
+  - jimhester/covr
+
+after_success:
+  - Rscript -e 'covr::coveralls()' 

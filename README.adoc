@@ -1,0 +1,16 @@
+# PASTECS
+
+image:https://travis-ci.org/phgrosjean/pastecs.svg["Build Status", link="https://travis-ci.org/phgrosjean/pastecs"]
+image:https://coveralls.io/repos/phgrosjean/pastecs/badge.svg?branch=master&service=github["Coverage Status",
+link="https://coveralls.io/github/phgrosjean/pastecs?branch=master"]
+image:http://www.r-pkg.org/badges/version/pastecs["CRAN Status", link="http://cran.r-project.org/package=pastecs"]
+image:https://img.shields.io/badge/license-GPL-blue.svg["State"]
+
+
+**PASTECS** stands for **package for the analysis of space-time ecological series**. It allows to transform an irregular time series into a relar one, and to analyze and decompose regular time series. It provides various S3 objects to ease the manipulation of time series.
+
+It is a PNEC-Art4 and IFREMER (Benoit.Beliaeff@ifremer.fr) initiative to bring PASSTEC 2000 (http://www.obs-vlfr.fr/~enseigne/anado/passtec/passtec.htm) functionalities to R.
+
+Install it from CRAN using `install.packages("pastecs")`.
+
+**License:** GPL v.2 or above.
