@@ -9,8 +9,10 @@
 
 **PASTECS** stands for **package for the analysis of space-time ecological series**. It allows to transform an irregular time series into a regular one, and to analyze and decompose regular time series. It provides various S3 objects to ease the manipulation of time series.
 
-Install it from CRAN using:
+Install the CRAN version using:
 
 ```r
 install.packages("pastecs")
 ```
+
+Latest devel version available from [Github](https://github.com/phgrosjean/pastecs), and sources + Windows binaries at [appveyor](https://ci.appveyor.com/project/phgrosjean/pastecs/build/artifacts).
