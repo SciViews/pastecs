@@ -1,11 +1,22 @@
 # History files
 .Rhistory
-
-# Example code in package build process
-*-Ex.R
+.Rapp.history
 
 # R data files from past sessions
 .Rdata
 
+# Example code in package build process
+*-Ex.R
+
 # RStudio files
 .Rproj.user/
+
+# C compilation files
+*.o
+src/*.o-*
+*.so
+src/*.os
+src/*.dll
+
+# Mac files
+.DS_Store
