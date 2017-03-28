@@ -15,19 +15,21 @@
 }
 
 \usage{
-turnpoints(x)
+turnpoints(x, calc.proba = TRUE)
 \method{print}{turnpoints}(x, \dots)
 \method{summary}{turnpoints}(object, \dots)
 \method{print}{summary.turnpoints}(x, \dots)
-\method{plot}{turnpoints}(x, level=0.05, lhorz=TRUE, lcol=2, llty=2, type="l",
-    xlab="data number", ylab=paste("I (bits), level = ", level * 100, "\%", sep = ""),
-    main=paste("Information (turning points) for:", x$data), \dots)
-\method{lines}{turnpoints}(x, max=TRUE, min=TRUE, median=TRUE,
-        col=c(4, 4, 2), lty=c(2, 2, 1), \dots)
-\method{extract}{turnpoints}(e, n, no.tp=0, peak=1, pit=-1, \dots)
+\method{plot}{turnpoints}(x, level = 0.05, lhorz = TRUE, lcol = 2, llty = 2,
+    type = "l", xlab = "data number", ylab = paste("I (bits), level = ",
+    level * 100, "\%", sep = ""), main = paste("Information (turning points) for:",
+    x$data), \dots)
+\method{lines}{turnpoints}(x, max = TRUE, min = TRUE, median = TRUE,
+    col = c(4, 4, 2), lty = c(2, 2, 1), \dots)
+\method{extract}{turnpoints}(e, n, no.tp = 0, peak = 1, pit = -1, \dots)
 }
 \arguments{
   \item{x}{ a vector or a time series for \code{turnpoints()}, a 'turnpoints' object for the methods }
+  \item{calc.proba}{ are the probabilities associated with each turning point also calculated? The default, \code{TRUE}, should be correct unless you really do not need these. In this case, the \code{plot()} method is not usable }
   \item{object}{ a 'turnpoints' object, as returned by the function \code{turnpoints()} }
   \item{e}{ a 'turnpoints' object, as returned by the function \code{turnpoints()} }
   \item{level}{ the significant level to draw on the graph if \code{lhorz=TRUE}. By default, \code{level=0.05}, which corresponds to a 5\% p-value for the test }
@@ -51,7 +53,7 @@ turnpoints(x)
 }
 \details{
   This function tests if the time series is purely random or not. Kendall (1976) proposed a series of tests for this. Moreover, graphical methods using the position of the turning points to draw automatically envelopes around the data are implemented, and also the drawing of median points between these envelopes.
-  
+
   With a purely random time series, one expect to find, on average, a turning point (peak or pit that is, an observation that is preceeded and followed by, respectively, lower or higher observations) every 1.5 observation. Given it is impossible to determine if first and last observation are turning point, it gives:
 
   \deqn{E(p) = 2/3*(n-2)}
@@ -66,7 +68,7 @@ turnpoints(x)
 
   where P is the probability to observe a turning point at time t under the null hypothesis that the time series is purely random, and thus, the distribution of turning points follows a normal distribution.
 
-  The quantity of information I associated with this probability is:  
+  The quantity of information I associated with this probability is:
 
   \deqn{I = -log2 P(t)}
 
@@ -92,12 +94,12 @@ Regarding your specific question, 'info' is the quantity of information I associ
   \item{info}{ Quantity of information associated with this point (see details) }
 }
 
-\references{ 
-Ibanez, F., 1982. \emph{Sur une nouvelle application de la theorie de l'information à la description des series chronologiques planctoniques.} J. Exp. Mar. Biol. Ecol., 4:619-632
+\references{
+Ibanez, F., 1982. \emph{Sur une nouvelle application de la theorie de l'information a la description des series chronologiques planctoniques.} J. Exp. Mar. Biol. Ecol., 4:619-632
 
 Kendall, M.G., 1976. \emph{Time-series, 2nd ed.} Charles Griffin & Co, London.
 }
-\author{ Frédéric Ibanez (\email{ibanez@obs-vlfr.fr}), Philippe Grosjean (\email{phgrosjean@sciviews.org}) }
+\author{ Frederic Ibanez (\email{ibanez@obs-vlfr.fr}), Philippe Grosjean (\email{phgrosjean@sciviews.org}) }
 
 \section{WARNING }{ the \code{lines()} method should be used to draw lines on the graph of the \emph{original} dataset (\code{plot(data, type="l")} for instance), \emph{not} on the graph of turning points (\code{plot(turnp)})! }
 
@@ -105,15 +107,16 @@ Kendall, M.G., 1976. \emph{Time-series, 2nd ed.} Charles Griffin & Co, London.
 
 \examples{
 data(marbio)
-plot(marbio[, "Nauplii"], type="l")
+plot(marbio[, "Nauplii"], type = "l")
 # Calculate turning points for this series
 Nauplii.tp <- turnpoints(marbio[, "Nauplii"])
 summary(Nauplii.tp)
 plot(Nauplii.tp)
 # Add envelope and median line to original data
-plot(marbio[, "Nauplii"], type="l")
+plot(marbio[, "Nauplii"], type = "l")
 lines(Nauplii.tp)
-# Note that lines() applies to the graph of original dataset!!!
-title("Raw data, envelope maxi., mini. and median line")
+# Note that lines() applies to the graph of original dataset
+title("Raw data, envelope maxi., mini. and median lines")
 }
+
 \keyword{ ts }
