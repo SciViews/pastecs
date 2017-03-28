@@ -20,3 +20,4 @@ src/*.dll
 
 # Mac files
 .DS_Store
+.Rproj.user
