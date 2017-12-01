@@ -13,7 +13,7 @@ Authors@R: c(person("Philippe", "Grosjean", role = c("aut", "cre"),
   person("Michele", "Etienne", role = "ctb",
   email = "etienne@obs-vlfr.fr"))
 Maintainer: Philippe Grosjean <phgrosjean@sciviews.org>
-Description: Regularization, decomposition and analysis of space-time series.
+Description: Regularisation, decomposition and analysis of space-time series.
   The pastecs R package is a PNEC-Art4 and IFREMER (Benoit Beliaeff
   <Benoit.Beliaeff@ifremer.fr>) initiative to bring PASSTEC 2000 functionalities to R.
 Depends: boot, stats
