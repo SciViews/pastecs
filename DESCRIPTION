@@ -1,8 +1,8 @@
 Package: pastecs
 Type: Package
 Title: Package for Analysis of Space-Time Ecological Series
-Version: 1.3-20
-Date: 2017-03-28
+Version: 1.3.20
+Date: 2018-03-15
 Author: Philippe Grosjean [aut, cre],
   Frederic Ibanez [aut],
   Michele Etienne [ctb]
