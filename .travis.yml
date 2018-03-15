@@ -1,79 +1,39 @@
 language: r
 
+sudo: false
+cache: packages
+
+r:
+  - oldrel
+  - release
+  - devel
+
 os:
   - linux
-  - osx
+# Disable MacOS X for now  - osx
 
-# Whitelist branches
 branches:
   only:
     - master
-
-# Allow for sudo commands
-sudo: required
 
 # Be strict when checking our package, but don't build the manual
 warnings_are_errors: true
 # Note: can also add --no-build-vignettes to both
 r_build_args: --no-manual --no-resave-data
-r_check_args: --no-manual
-
+r_check_args: --as-cran
+disable_homebrew: true
 
 # Email notifications
 notifications:
   email:
     on_success: change
     on_failure: change
-    
-    
+
+
 # Environment variables
 env:
  global:
    - CRAN: http://cran.rstudio.com
 
-# System dependencies
-#apt_packages:
-# - libcurl4-openssl-dev
-# - libxml2-dev
-# Binary R packages (faster, but not always latest versions!)
-r_binary_packages:
-  - boot
-  # For covr
-  - jsonlite  
-  - devtools
-  - httr
-  - crayon
-  - htmltools
-  - knitr
-  #- rex # Fails to compile for precise in Rutter's PPA
-  # For rex
-  - magrittr
-  - lazyeval
-  # For tests
-  - svUnit
-
-# R package to be compiled from sources (latest versions!)
-r_packages:
-  - rex
-  - covr
-
-# Bioconductor packages
-#bioc_packages:
-
-# Install the bleeding edge version of a package from github (eg to pick
-# up a not-yet-released bugfix)
-#r_github_packages:
-# - jimhester/covr
-
-# Install additional stuff
-#before_install:
-#  - sudo add-apt-repository -y ppa:ubuntu-toolchain-r/test
-#  - sudo apt-get update -qq
-#  - sudo apt-get install -qq <packages>
-#  - sudo apt-get install -qq g++-4.8
-#  - export CXX="g++-4.8"
-#  - sudo update-alternatives --install /usr/bin/g++ g++ /usr/bin/g++-4.8 90
-#  - sudo ln -s /usr/lib/x86_64-linux-gnu/libgfortran.so.3 /usr/lib/libgfortran.so
- 
 after_success:
   - Rscript -e 'covr::codecov()'
