@@ -13,5 +13,7 @@ Makefile
 ^\.travis\.yml$
 ^appveyor\.yml$
 ^.*\.Rproj$
-doc
-doc/*
+manual
+manual/*
+^doc$
+^Meta$

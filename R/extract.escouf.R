@@ -21,6 +21,6 @@ function(e, n, level=e$level, ...) {
 	if (level>1 || level<0) stop("level must be a value between 0 and 1!")
 	# level must not be lower than e$calc.level, otherwise we don't have enough information!
 	if (level>e$calc.level) stop("level is higher that the one used in calculation, unable to fully extract Escoufier's matrix at this level!")
-	Res <- eval(parse(text=e$data))[e$vr[e$RV<level]]
+	Res <- eval(parse(text=e$data))[, e$vr[e$RV<level]]
 	Res
 }

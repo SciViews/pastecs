@@ -1,0 +1,123 @@
+---
+title: "Time representation in biological time series"
+author: "Philippe Grosjean"
+date: "`r Sys.Date()`"
+output:
+  rmarkdown::html_vignette:
+    fig_caption: yes
+vignette: >
+  %\VignetteIndexEntry{Time representation in biological time series}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r setup, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+Computer representation of time is a difficult topic because it does not fit in a decimal system. Many people (but not all) use the Gregorian calendar. One year is divided into four seasons, and roughly regular 12 months of 28-31 days each. This supperposes more or less with lunar cycles that last 29.5 days. Finally, a week is more or less the quarter of a month, and there are just a little bit more than 52 weeks per year. None of these divisions are a perfect fraction of a year, and the year itself is not a constant number of days, since leap years have 366 days instead of 365.
+
+At the day level, it is easier, although still not decimal. The day as a unit is only slightly shifted from time to time by leap seconds (see `.leap.seconds`). However, *local* time measurement is also regulated by time zones and changes between summer and winter times.
+
+```{r}
+.leap.seconds
+```
+
+
+All these oddities are handled by time objects in R, being basic `POSIXct`/`POSIXlt`, or `Dates` objects in base R, or their equivalent in packages like **lubridate**, **hms** and many more. However, in **pastecs** we are working with time series where the interesting parts are *long-term trends* and *cycles*, from a biological/ecological point of view. This is a little bit different than our calendar time. For instance, week days, *versus* week-ends have rather limited effects and interests on ecological series. The same can be said from holidays.
+
+On the other hand, there are three major interesting cycles: the day (circadian cycle), the years (successive seasons), and the moon cycle that influences tides, night-time light and many biological aspects directly or indirectly.
+
+
+## Time in pastecs time series
+
+In **pastecs** we stick with the base **ts** and **mts** objects. A **ts** object is a numerical vector representing measurement done at regular time interval, together with a **tsp** attribute and a `ts` class. See for instance, `nottem`, the temperature in degrees Fahrenheit recorded at Nottingham Castle over 20 years. 
+
+```{r}
+data(nottem)
+nottem
+attributes(nottem)
+```
+
+In a `mts` object, the numeric vector is replaced by a matrix that represents *multiple* measurements done at the same regular time intervals.
+
+The **tsp** attributes indicates time with only three values no mather the length of the series: the **start time**, exprimed with decimal values in *time units*, the **end time**, and the **frequency** (that is, the number of observations per unit of time). So, two questions: (1) what time units? (2) How complex and inheritently non-decimal time measurements can be squashed into decimal values?
+
+### Time units
+
+As strange as it may be, time units is *not* indicated nor imposed in **ts** objects. You are free to chose the one you like: second, minute, hour, day, week, month, year, century, etc. But as soon as you chose the unit, you must reexpress the time as a decimal value of this unit.
+
+You are free to choose your time units, but that does not mean all time units are equals. There are better ones... and it depends on what you want to study in your time series. **The best time unit is indeed the one that matches the main cycle you want to study**. Hence, the two key time units are the **day** (for circadian cycles) and the **year** (for seasonal effects).
+
+### Days
+
+If you are working with time series that focus on circadian effects, you should use the day as time unit. Then, time is reexpressed as a decimal fraction of a day. For instance, 0.5 is midday, 0.25 is 6 AM, etc. Since time is stored as numeric internally in R, it is *already* converted into decimal time. There is nothing to do, except to understand the concept of "a decimal fraction of a day".
+
+You don't have to worry too much about leap seconds (although, it is useful to document you a little bit about it), but you should be very attentive to time zones, UTC time and all these concepts in order to properly convert you time into decimal fractions of a day. Otherwise, there is not much difficulties here.
+
+Reasonable choices for the frequency of observations are 1 (every day), 2 (every twelve hours), 4 (every 6h), 12, 24, 48 (every 1/2h), 144 (every 10min), 288 (every 5min), or 1440 (every min). Of course, you can use any frequency you like.
+
+> Take care that the **ts** object with `frequency = 12` or `frequency = 4` will automatically assume that the time units is *year* and will print the data as months, or quarters respectively (see the `nottem` example). In the present case, it will be thus wrongly printed!
+
+### Years
+
+The **year** unit is to be used when you work with seasonal effects, and interannual changes. This unit is much more problematic and in **pastecs** it is simplified into round sub-units, considering seasons (four subunits), or months (twelve subunits) also roughly equivalent to the other major cycle impacting biology: the moon cycle.
+
+To avoid accumulated lags in long time series of tens of years, one year is considered to be 365.25 days. The function `daystoyears()` transforms your time, expressed in days into a year time unit that respects the convention of each year being exactly 365.25 days.
+
+```{r}
+library(pastecs)
+# A vector with a "days" time-scale (25 values every 30 days)
+my_days <- (1:25) * 30
+# Convert it to a "years" time-scale, using 23/05/2001 (d/m/Y) as first value
+daystoyears(my_days, datemin = "23/05/2001", dateformat = "d/m/Y")
+```
+
+As we can see here, time is now expressed as a decimal fraction of a year, or 365.25 days. The "natural" values you could choose for frequency are 4 (quarters or seasons), 12 (months), 24 (half-months), 48, 52 ("weeks"), 364 ("days") or 384. But no mather what you choose, it won't fit into **actual** calendar sub-units. For instance, for `frequency = 12`, you have something similar to months but perfectly equally spaced. No mather your month is 28, 29, 30 or 31 days long, in the decimal system used in `ts`objects in **pastecs**, it will always be 1/12 of a "year" (as 365.25 days). It means one "month" is indeed:
+
+```{r}
+365.25/12
+```
+
+That is: 30 days, plus a fraction of a day that happens to be 0.4375! How can we manage that? Taken exactly as defined, it would make a problem because the **hour of the day** will shift from month to month, and year to year (each month does not start at the same hour).
+
+> To avoid the problem of the shift in hour, you must separate the circadian effect and the seasonal effect. In order to *eliminate* the circadian effect out of your data, you can consider measurements always taken at the same hour as a starting point. Another solution is to aggregate your measurements by day. Depending on your variable, the aggregation can be done as mean or median daily value, or min, max, or the sum for frequency of occurence of an event.
+
+Hence, before using `daystoyears()` you must make sure you have *no* daily effect anymore in your data. Now, measurements are often planned on a weekly basis, and there are:
+
+```{r}
+365.25/7
+```
+
+... approximatey 52 weeks (plus 0.179) in a "year". So you have to choose for frequency: either `frequency = 48` as "four measurements per month", but then, time interval is:
+
+```{r}
+365.25/48
+```
+
+seven days **plus 14h and 24min**, or `frequency = 52`, and you got much closer to your "real week", with a difference of *only* roughly 35min. However, the choice of 52 is less optimal in term of months, because 52 does not divides exactly by twelve, while 48 does.
+
+The same dilemna exists for "days". Either you can choose `frequency = 364`, which matches the actual number of days (minus 1.25) and is a multiple of seven (exactly 52 "weeks" in 364 "days"), or you must consider `frequency = 360` to get something as closer as possible to a "day", while remaining a multiple of twelve. And if you want a multiple of 4, 12, 24, and 48 simultaneously, you must consider `frequency = 384`.
+
+### So, what?
+
+- In **pastecs**, time is simplified to a decimal fraction of a time unit.
+
+- Best time unit should match the main cycle you are interested in your time series: **days** for circadian cycle, **years** for seasonal cycle.
+
+- With the **days**, you must just understand the notion of "fraction of a day", and take care of the **time zone** in your conversion.
+
+- With the **years** unit, you must understand that everything is not only transformed into decimal fraction of a year, but also that all units and subunits are **exact divisions**, and thus, they are **not** perfect matches of real sub-units in the Gregorian calendar like months, weeks, or days. It makes sense in the context of methods and tools used on time series to have exact subunits, plus, usually the living organisms do not really care if we are sunday or monday!
+
+- Conversion from time expressed in days must be done with `daystoyears()` to take this into account, but only after making sure that the daily effect is eliminated (only use measurments made at the same hour, or aggregate data by days before transformation), because there will be a *shift in the hours* during the calculation. You can regularize you time series using `regul(units = "daystoyears")` to let **pastecs** manage all the gory details.
+
+- It is convenient to adjust the frequency of observations into a round fraction of the year, with most useful values being 4 (quarters or seasons), 12 (months), 24, 48,... down to 384, which is the closest match to a "day", while remaining divisible by 4, 12, 24 and 48.
+
+- Another division of the year is based on the week (sampling campaigns are often week-based). The closest integer division of the year is then `frequency = 52` for "weeks", or `frequency = 364` for "days". But then, it is **not** perfectly divisible by the major year subunits like "months". The closest match for the "days" to be divisible by twelve is `frequency = 360`.
+
+- You should consider if you really *need* a frequency larger that 48 (or 52) to study interannual variations and seasonal cycles. It is often much better to aggregate data to `frequency = 48`, or `frequency = 52` for "weeks", instead of using one day or less as time interval because the extra data you got that way do not provide useful information at the year-unit level for, say, multi-decanal time series.
+
+> Flattened time in **pastecs** slightly distords the complex reality, but it has no noticeable impact on subsequent analyses of most biological/ecological time series. On the other hand, it greatly simplifies and speeds up calculations in a context where the lag of a time series (a shift in time by a constant value) is very often used in the computations.
