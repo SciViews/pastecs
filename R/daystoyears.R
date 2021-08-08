@@ -11,11 +11,13 @@ function (x, datemin=NULL, dateformat="m/d/Y") {
 		# make necessary conversions to accept old formats
 		dateformat <- sub("month", "%B", dateformat)	# Full spelled month
 		dateformat <- sub("mon", "%b", dateformat)		# Abbreviated month
-		dateformat <- sub("m", "%m", dateformat)		# month - numeric
-		dateformat <- sub("d", "%d", dateformat)	    # day
-		dateformat <- sub("y", "%y", dateformat)		# year (two digits)
-		dateformat <- sub("Y", "%Y", dateformat)		# Year (four digits)
-		datemin <- strptime(as.character(datemin), format=dateformat)
+		dateformat <- sub("[%]?m", "%m", dateformat)		# month - numeric
+		dateformat <- sub("[%]?d", "%d", dateformat)	    # day
+		dateformat <- sub("[%]?y", "%y", dateformat)		# year (two digits)
+		dateformat <- sub("[%]?Y", "%Y", dateformat)		# Year (four digits)
+		datemin <- strptime(as.character(datemin), format = dateformat)
+		if (is.na(datemin))
+		  stop("Invalid date or date format!")
 	}
 	# Julian is adapted from julian.default in lib chron 2.2-19 (this way we don't require chron!)
 	"Julian" <- function(x, d, y) {
@@ -47,7 +49,7 @@ function (x, datemin=NULL, dateformat="m/d/Y") {
 	# We have days as units. We want years with a "linear scale", i.e.: 1 year = 365.25 days, 1 month = 1/12 years
 	# We want also the integer value reflect exactly the current year, i.e.: 1997.xxx for dates in the year 1997
 	if(is.null(yearorig <- options("chron.origin")$year))
-		yearorig <- defyearorig	
+		yearorig <- defyearorig
 	x <- x/365.25 + yearorig
 	x
 }

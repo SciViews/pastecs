@@ -1,6 +1,6 @@
 Package: pastecs
 Type: Package
-Version: 1.4.0
+Version: 1.4.1
 Title: Package for Analysis of Space-Time Ecological Series
 Description: Regularisation, decomposition and analysis of space-time series.
   The pastecs R package is a PNEC-Art4 and IFREMER (Benoit Beliaeff
