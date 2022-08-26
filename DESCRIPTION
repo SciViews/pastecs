@@ -20,4 +20,4 @@ BugReports: https://github.com/phgrosjean/pastecs/issues
 LazyData: yes
 NeedsCompilation: no
 VignetteBuilder: knitr
-RoxygenNote: 7.1.0
+RoxygenNote: 7.1.2
