@@ -1,23 +1,29 @@
 Package: pastecs
 Type: Package
-Version: 1.4.1
+Version: 1.4.2
 Title: Package for Analysis of Space-Time Ecological Series
 Description: Regularisation, decomposition and analysis of space-time series.
   The pastecs R package is a PNEC-Art4 and IFREMER (Benoit Beliaeff
   <Benoit.Beliaeff@ifremer.fr>) initiative to bring PASSTEC 2000 functionalities to R.
 Authors@R: c(person("Philippe", "Grosjean", role = c("aut", "cre"),
-  email = "phgrosjean@sciviews.org"),
+  email = "phgrosjean@sciviews.org",
+  comment = c(ORCID = "0000-0002-2694-9471")),
   person("Frederic", "Ibanez", role = "aut",
   email = "ibanez@obs-vlfr.fr"),
   person("Michele", "Etienne", role = "ctb",
   email = "etienne@obs-vlfr.fr"))
 Maintainer: Philippe Grosjean <phgrosjean@sciviews.org>
+Depends: R (>= 4.0.0)
 Imports: boot, stats, graphics, utils, grDevices
 Suggests: svUnit, covr, knitr, rmarkdown
+ByteCompile: yes
 License: GPL-2
 URL: https://github.com/SciViews/pastecs
 BugReports: https://github.com/SciViews/pastecs/issues
 LazyData: yes
 NeedsCompilation: no
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 7.2.3
 VignetteBuilder: knitr
-RoxygenNote: 7.1.2
+Encoding: UTF-8
+Language: en-US

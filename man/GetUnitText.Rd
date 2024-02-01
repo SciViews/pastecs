@@ -16,17 +16,13 @@ GetUnitText(series)
 \value{
   a string with the best time unit for graphs
 }
-\author{ Philippe Grosjean (\email{phgrosjean@sciviews.org}), Frédéric Ibanez (\email{ibanez@obs-vlfr.fr}) }
+\author{ Philippe Grosjean (\email{phgrosjean@sciviews.org}), Fr?d?ric Ibanez (\email{ibanez@obs-vlfr.fr}) }
 
 \seealso{ \code{\link{daystoyears}}, \code{\link{yearstodays}} }
 
 \examples{
 timeser <- ts(1:24, frequency=12)           # 12 observations per year
-if (exists("is.R") && is.function(is.R) && is.R()) {  # We are in R
 attr(timeser, "units") <- "years"           # time in years for 'ts' object
-} else {                                              # We are in Splus
-attr(attr(timeser, "tspar"), "units") <- "years" # Idem for Splus 'rts' object
-}
 GetUnitText(timeser)                        # formats unit (1/12 year=months)
 }
 \keyword{ ts }

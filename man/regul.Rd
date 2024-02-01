@@ -49,7 +49,7 @@ regul(x, y=NULL, xmin=min(x), n=length(x), units="days", frequency=NULL,
   \item{units}{ the time unit for the \code{x} vector. By default \code{units="days"}. A special value, \code{units="daystoyears"} indicates that \code{x} is expressed in "days" (1 unit = 1 day) but that we want to obtain the final regular time series expressed in "years" (1 unit = 1 year). Give a correct value for \code{datemin} to make sure the right fraction of the year is computed for each observation (see example hereunder) }
   \item{frequency}{ the frequency of the regulated time series in the corresponding time unit. For instance, \code{frequency=12} with \code{units="years"} means montly sampled observations. Warning! When using \code{units="daystoyears"}, specify \code{frequency} (or \code{deltat}) in years! }
   \item{deltat}{ the interval between two observations in the regulated time series. It is the inverse of \code{frequency}. If both \code{frequency} and \code{deltat} are provided, then \code{frequency} supersedes \code{deltat} }
-  \item{datemin}{ this is mostly useful for converting "days" in "years" time-scales (\code{units="daystoyears"}). If the \code{x} vector contains: 1, 3, 6,... (day \#1, day \#3, day \#6,... of the experiment), one can give here the exact date of the first observation, allowing to define a correct origin in the "years" time scale. Provide a string in a format compatible with \code{dateformat}. For instance, if day \#1 is the 21th March 1998, give \code{datemin="03/21/1998"} with \code{dateformat="m/d/Y"} }
+  \item{datemin}{ this is mostly useful for converting "days" in "years" time-scales (\code{units="daystoyears"}). If the \code{x} vector contains: 1, 3, 6,... (day 1, day 3, day 6... of the experiment), one can give here the exact date of the first observation, allowing to define a correct origin in the "years" time scale. Provide a string in a format compatible with \code{dateformat}. For instance, if day 1 is the 21th March 1998, give \code{datemin="03/21/1998"} with \code{dateformat="m/d/Y"} }
   \item{dateformat}{ indicate how \code{datemin} is formated. For instance: \code{"d/m/Y"}, or \code{"m/d/Y"} (by default), see \code{daystoyears()} for more info on date formatting }
   \item{tol}{ the tolerance in the time-scale to determine if a measured value is used to approximate a regulated value. If \code{tol=0}, observations in each respective series must match exactly, otherwise observations in the regulated series are interpolated. \code{tol} must be a round fraction of \code{deltat} (deltat, deltat/2, deltat/3, etc...), and cannot be larger than it, otherwise, \code{tol} is automatically adjusted to the closest allowed value. By default, \code{tol=NULL}. This is equivalent to \code{tol=0}. Warning! In the particular case of \code{units="daystoyears"}, \code{tol} must be expressed in the original time-scale, that is "days", while \code{deltat} must be expressed in the fimal time-scale, that is "years"! }
   \item{tol.type}{ the type of adjustment to use for the time-tolerance: \code{"left"}, \code{"right"}, \code{"both"} (by default) or \code{"none"}. If \code{tol.type="left"}, corresponding \code{x} values are seeked in a window ]xregul-tol, xregul]. If \code{tol.type="right"}, they are seeked in the window [xregul, xregul+tol[. If \code{tol.type="both"}, then they are seeked in the window ]xregul-tol, xregul+tol]. If several observations are in this window, the closest one is used. Finally, if \code{tol.type="none"}, then \emph{all} observations in the regulated time series are interpolated (even if exactly matching observations exist!) }
@@ -83,7 +83,7 @@ regul(x, y=NULL, xmin=min(x), n=length(x), units="days", frequency=NULL,
 \value{
   An object of type 'regul' is returned. It has methods \code{print()}, \code{summary()}, \code{plot()}, \code{lines()}, \code{identify()}, \code{hist()}, \code{extract()} and \code{specs()}.
 }
-\references{ 
+\references{
 Lancaster, P. & K. Salkauskas, 1986. \emph{Curve and surface fitting.} Academic Press, England, 280 pp.
 
 Fox, W.T. & J.A. Brown, 1965. \emph{The use of time-trend analysis for environmental interpretation of limestones.} J. Geol., 73:510-518.
@@ -92,7 +92,7 @@ Ibanez, F., 1991. \emph{Treatment of the data deriving from the COST 647 project
 
 Ibanez, F. & J.C. Dauvin, 1988. \emph{Long-term changes (1977-1987) on a muddy fine sand Abra alba - Melinna palmata population community from the Western English Channel.} J. Mar. Ecol. Prog. Ser., 49:65-81.
 }
-\author{ Frédéric Ibanez (\email{ibanez@obs-vlfr.fr}), Philippe Grosjean (\email{phgrosjean@sciviews.org}) }
+\author{ Fr?d?ric Ibanez (\email{ibanez@obs-vlfr.fr}), Philippe Grosjean (\email{phgrosjean@sciviews.org}) }
 \seealso{ \code{\link{regul.screen}}, \code{\link{regul.adj}}, \code{\link{tseries}}, \code{\link{is.tseries}}, \code{\link{regconst}}, \code{\link{reglin}}, \code{\link{regspline}}, \code{\link{regarea}}, \code{\link{daystoyears}} }
 
 \examples{
