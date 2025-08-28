@@ -51,7 +51,7 @@ abund(x, f = 0.2)
   \item{lvars}{ If \code{TRUE} then the x-axis labels of the n left variables
     are printed in a different color to emphasize them }
   \item{lcol}{ The color to use to draw the vertical line (\code{lvert=TRUE})
-    and the variables labels (\code{lvars=TRUE}) at left af the nth variable.
+    and the variables labels (\code{lvars=TRUE}) at left of the nth variable.
     By default, color 2 is used }
   \item{llty}{ The style used to draw the vertical line (\code{lvert=TRUE}).
     By default, a dashed line is used }
@@ -83,13 +83,13 @@ abund(x, f = 0.2)
   \code{summary()}, \code{plot()}, \code{lines()}, \code{identify()}, \code{extract()}.
 }
 \references{
-  Ibanez, F., J.-C. Dauvin & M. Etienne, 1993. \emph{Comparaison des évolutions
-  à long terme (1977-1990) de deux peuplements macrobenthiques de la baie de
+  Ibanez, F., J.-C. Dauvin & M. Etienne, 1993. \emph{Comparaison des Ã©volutions
+  Ã  long terme (1977-1990) de deux peuplements macrobenthiques de la baie de
   Morlaix (Manche occidentale): relations avec les facteurs hydroclimatiques.}
   J. Exp. Mar. Biol. Ecol., 169:181-214.
 }
 \author{ Philippe Grosjean (\email{phgrosjean@sciviews.org}),
-  Frédéric Ibanez (\email{ibanez@obs-vlfr.fr}) }
+  FrÃ©dÃ©ric Ibanez (\email{ibanez@obs-vlfr.fr}) }
 
 \seealso{ \code{\link{escouf}} }
 

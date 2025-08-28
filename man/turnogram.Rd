@@ -30,7 +30,7 @@ turnogram(series, intervals=c(1, length(series)/5), step=1, complete=FALSE,
 }
 \arguments{
   \item{series}{ a single regular time series ('rts' object in Splus or 'ts' object in \R) }
-  \item{intervals}{ the range (mini, maxi) of the intervals to calculate, i.e., to take one obervation every 'interval' one. By default, \code{intervals} ranges from 1 to the fifth of the total number of observations }
+  \item{intervals}{ the range (mini, maxi) of the intervals to calculate, i.e., to take one observation every 'interval' one. By default, \code{intervals} ranges from 1 to the fifth of the total number of observations }
   \item{x}{ a 'turnogram' object }
   \item{object}{ a 'turnogram' object }
   \item{e}{ a 'turnogram' object }
@@ -56,25 +56,25 @@ turnogram(series, intervals=c(1, length(series)/5), step=1, complete=FALSE,
   \item{drop}{ the number of observations to drop at the beginning of the series before proceeding with the aggregation of the data for the extracted series. By default, \code{drop=0}: no observations are dropped }
 }
 \details{
-The turnogram is a generalisation of the information theory (see \code{turnpoints()}). If a series has a lot of erratic peaks and pits that alternate with a high frequency, it is more difficult to interpret than a more monotonous series. These erratic fluctuations can be eliminated by changing the scale of observation (keeping one observation every two, three, four,... from the original series). The turnogram resample the original series this way, and calculate a monotony index for each resampled subseries. This monotony index quantifies the number of peaks and pits presents in the series, compared to the total number of observations. The Gleissberg distribution (see \code{pgleissberg()}) indicates the probability to have such a number of extrema in a series given it is purely random. It is possible to test monotony indices: is it a random series or not (two-sided test), or is more monotonous than a random series (left-sided test) thanks to a Chi-2 test proposed by Wallis & Moore (1941). 
+The turnogram is a generalisation of the information theory (see \code{turnpoints()}). If a series has a lot of erratic peaks and pits that alternate with a high frequency, it is more difficult to interpret than a more monotonous series. These erratic fluctuations can be eliminated by changing the scale of observation (keeping one observation every two, three, four,... from the original series). The turnogram resample the original series this way, and calculate a monotony index for each resampled subseries. This monotony index quantifies the number of peaks and pits presents in the series, compared to the total number of observations. The Gleissberg distribution (see \code{pgleissberg()}) indicates the probability to have such a number of extrema in a series given it is purely random. It is possible to test monotony indices: is it a random series or not (two-sided test), or is more monotonous than a random series (left-sided test) thanks to a Chi-2 test proposed by Wallis & Moore (1941).
 
-There are various turnograms depending on the way the observations are aggregated inside each time interval. For instance, if one consider one observation every three from the original series, each group of three observations can be aggregated in several different ways. One can take the mean of the three observation, or the median value, or the sum,... One can also decide not to aggregate observations, but to drop some of them. Hence, one can take only the first or the last observation of the group. All these options can be choosen by defining the argument \code{FUN=...}. A simple turnogram correspond to the change of the monotony index with the scale of observation, stating always from the first observation. One could also decide to start from the second, or the third observation for an aggregation of the observations three by three... and result could be somewhat different. A complete turnogram investigates all possibles combinations (observation scale versus starting point for the aggregation) and trace the maximal, minimal and mean curves for the change of the monotony index. It is thus more informative than the simple turnogram. However, it takes much more time to compute.
+There are various turnograms depending on the way the observations are aggregated inside each time interval. For instance, if one consider one observation every three from the original series, each group of three observations can be aggregated in several different ways. One can take the mean of the three observation, or the median value, or the sum,... One can also decide not to aggregate observations, but to drop some of them. Hence, one can take only the first or the last observation of the group. All these options can be chosen by defining the argument \code{FUN=...}. A simple turnogram correspond to the change of the monotony index with the scale of observation, stating always from the first observation. One could also decide to start from the second, or the third observation for an aggregation of the observations three by three... and result could be somewhat different. A complete turnogram investigates all possibles combinations (observation scale versus starting point for the aggregation) and trace the maximal, minimal and mean curves for the change of the monotony index. It is thus more informative than the simple turnogram. However, it takes much more time to compute.
 
 The most obvious use of the turnogram is for the pretreatment of continuously sampled data. It helps in deciding which is the optimal sampling interval for the series to bear as most information as possible while keeping the dataset as small as possible. It is also interesting to compare the turnogram with other functions like the variogram (see \code{vario()}) or the spectrogram (see \code{spectrum()}).
 }
 \value{
   An object of type 'turnogram' is returned. It has methods \code{print()}, \code{summary()}, \code{plot()}, \code{identify()} and \code{extract()}.
 }
-\references{ 
-Dallot, S. & M. Etienne, 1990. \emph{Une méthode non paramétrique d'analyse des series en océanographie biologique: les tournogrammes.} Biométrie et océanographie - Société de biométrie, 6, Lille, 26-28 mai 1986. IFREMER, Actes de colloques, 10:13-31.
+\references{
+Dallot, S. & M. Etienne, 1990. \emph{Une mÃ©thode non paramÃ©trique d'analyse des series en ocÃ©anographie biologique: les tournogrammes.} BiomÃ©trie et ocÃ©anographie - SociÃ©tÃ© de biomÃ©trie, 6, Lille, 26-28 mai 1986. IFREMER, Actes de colloques, 10:13-31.
 
 Johnson, N.L. & Kotz, S., 1969. \emph{Discrete distributions.} J. Wiley & sons, New York, 328 pp.
 
 Kendall, M.G., 1976. \emph{Time-series, 2nd ed.} Charles Griffin & co, London.
 
-Wallis, W.A. & G.H. Moore, 1941. \emph{A significance test for time series.} National Bureau of Economic Research, tech. paper n°1.
+Wallis, W.A. & G.H. Moore, 1941. \emph{A significance test for time series.} National Bureau of Economic Research, tech. paper nÂ°1.
 }
-\author{ Frédéric Ibanez (\email{ibanez@obs-vlfr.fr}), Philippe Grosjean (\email{phgrosjean@sciviews.org}) }
+\author{ FrÃ©dÃ©ric Ibanez (\email{ibanez@obs-vlfr.fr}), Philippe Grosjean (\email{phgrosjean@sciviews.org}) }
 
 \seealso{ \code{\link{pgleissberg}}, \code{\link{turnpoints}}, \code{\link{first}}, \code{\link{last}}, \code{\link{vario}}, \code{\link[stats]{spectrum}} }
 
@@ -86,7 +86,7 @@ plot(bnr4, type="l", main="bnr4: raw data", xlab="Time")
 # A simple turnogram is calculated
 bnr4.turno <- turnogram(bnr4)
 summary(bnr4.turno)
-# A complete turnogram confirms that "level=3" is a good value: 
+# A complete turnogram confirms that "level=3" is a good value:
 turnogram(bnr4, complete=TRUE)
 # Data with maximum info. are extracted (thus taking 1 every 3 observations)
 bnr4.interv3 <- extract(bnr4.turno)

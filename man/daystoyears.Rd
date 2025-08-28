@@ -6,7 +6,7 @@
 
 \title{ Convert time units from "days" to "years" or back }
 \description{
-  Convert time scales. The time scale "days" corresponds to 1 unit per day. The time scale "years" uses 1 unit for 1 year. It is used in any analysis that requires seasonal decomposition and/or elimination. 
+  Convert time scales. The time scale "days" corresponds to 1 unit per day. The time scale "years" uses 1 unit for 1 year. It is used in any analysis that requires seasonal decomposition and/or elimination.
 }
 
 \usage{
@@ -20,17 +20,17 @@ yearstodays(x, xmin=NULL)
   \item{xmin}{ The minimum value for the "days" time-scale }
 }
 \details{
-  The "years" time-scale uses one unit for each year. We deliberately "linearized" time in this time-scale and each year is considered to have exactly 365.25 days. There is thus no adjustment for lep years.
+  The "years" time-scale uses one unit for each year. We deliberately "linearized" time in this time-scale and each year is considered to have exactly 365.25 days. There is thus no adjustment for lap years.
   Indeed, a small shift (less than one day) is introduced. This could result, for some dates, especially the 31st December, or 1st January of a year to be considered as belonging to the next, or previous year, respectively!
-  Similarly, one month is considered to be 1/12 year, no mather if it has 28, 29, 30 or 31 days. Thus, the same warning applies: there are shifts in months introduced by this linearization of time!
+  Similarly, one month is considered to be 1/12 year, no matter if it has 28, 29, 30 or 31 days. Thus, the same warning applies: there are shifts in months introduced by this linearization of time!
   This representation simplifies further calculations, especially regarding seasonal effects (a quarter is exactly 0.25 units for instance), but shifts introduced in time may or may not be a problem for your particular application
   (if exact dates matters, do not use this; if shifts of up to one day is not significant, there is no problem, like when working on long-term biological series with years as units).
-  Notice that converting it back to "days", using \code{yearstodays()} restablishes exact dates without errors. So, no data is lost, it just a conversion to a simplified (linearized) calendar!
+  Notice that converting it back to "days", using \code{yearstodays()} reestablishes exact dates without errors. So, no data is lost, it just a conversion to a simplified (linearized) calendar!
 }
 \value{
   A numerical vector of the same length as \code{x} with the converted time-scale
 }
-\author{ Philippe Grosjean (\email{phgrosjean@sciviews.org}), Frédéric Ibanez (\email{ibanez@obs-vlfr.fr}) }
+\author{ Philippe Grosjean (\email{phgrosjean@sciviews.org}), FrÃ©dÃ©ric Ibanez (\email{ibanez@obs-vlfr.fr}) }
 
 \seealso{ \code{\link{buysbal}} }
 

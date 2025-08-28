@@ -16,7 +16,7 @@ GetUnitText(series)
 \value{
   a string with the best time unit for graphs
 }
-\author{ Philippe Grosjean (\email{phgrosjean@sciviews.org}), Fr?d?ric Ibanez (\email{ibanez@obs-vlfr.fr}) }
+\author{ Philippe Grosjean (\email{phgrosjean@sciviews.org}), Frédéric Ibanez (\email{ibanez@obs-vlfr.fr}) }
 
 \seealso{ \code{\link{daystoyears}}, \code{\link{yearstodays}} }
 

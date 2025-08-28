@@ -1,7 +1,7 @@
 import(boot, stats, graphics, utils)
 importFrom(grDevices, xy.coords)
 
-exportPattern(".")
+exportPattern("^[^.].+")
 
 S3method(extract, abund)
 S3method(extract, escouf)

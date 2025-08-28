@@ -12,7 +12,7 @@
 
 <meta name="author" content="Philippe Grosjean" />
 
-<meta name="date" content="2024-02-01" />
+<meta name="date" content="2025-08-28" />
 
 <title>Time representation in biological time series</title>
 
@@ -50,6 +50,7 @@ overflow: visible;
 }
 </style>
 <style type="text/css" data-origin="pandoc">
+html { -webkit-text-size-adjust: 100%; }
 pre > code.sourceCode { white-space: pre; position: relative; }
 pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
@@ -341,14 +342,14 @@ code > span.er { color: #a61717; background-color: #e3d2d2; }
 <h1 class="title toc-ignore">Time representation in biological time
 series</h1>
 <h4 class="author">Philippe Grosjean</h4>
-<h4 class="date">2024-02-01</h4>
+<h4 class="date">2025-08-28</h4>
 
 
 
 <p>Computer representation of time is a difficult topic because it does
 not fit in a decimal system. Many people (but not all) use the Gregorian
 calendar. One year is divided into four seasons, and roughly regular 12
-months of 28-31 days each. This supperposes more or less with lunar
+months of 28-31 days each. This superposes more or less with lunar
 cycles that last 29.5 days. Finally, a week is more or less the quarter
 of a month, and there are just a little bit more than 52 weeks per year.
 None of these divisions are a perfect fraction of a year, and the year
@@ -423,7 +424,7 @@ recorded at Nottingham Castle over 20 years.</p>
 matrix that represents <em>multiple</em> measurements done at the same
 regular time intervals.</p>
 <p>The <strong>tsp</strong> attributes indicates time with only three
-values no mather the length of the series: the <strong>start
+values no matter the length of the series: the <strong>start
 time</strong>, exprimed with decimal values in <em>time units</em>, the
 <strong>end time</strong>, and the <strong>frequency</strong> (that is,
 the number of observations per unit of time). So, two questions: (1)
@@ -494,10 +495,10 @@ a year time unit that respects the convention of each year being exactly
 <p>As we can see here, time is now expressed as a decimal fraction of a
 year, or 365.25 days. The “natural” values you could choose for
 frequency are 4 (quarters or seasons), 12 (months), 24 (half-months),
-48, 52 (“weeks”), 364 (“days”) or 384. But no mather what you choose, it
+48, 52 (“weeks”), 364 (“days”) or 384. But no matter what you choose, it
 won’t fit into <strong>actual</strong> calendar sub-units. For instance,
 for <code>frequency = 12</code>, you have something similar to months
-but perfectly equally spaced. No mather your month is 28, 29, 30 or 31
+but perfectly equally spaced. No matter your month is 28, 29, 30 or 31
 days long, in the decimal system used in <code>ts</code>objects in
 <strong>pastecs</strong>, it will always be 1/12 of a “year” (as 365.25
 days). It means one “month” is indeed:</p>
@@ -515,14 +516,14 @@ the circadian effect out of your data, you can consider measurements
 always taken at the same hour as a starting point. Another solution is
 to aggregate your measurements by day. Depending on your variable, the
 aggregation can be done as mean or median daily value, or min, max, or
-the sum for frequency of occurence of an event.</p>
+the sum for frequency of occurrence of an event.</p>
 </blockquote>
 <p>Hence, before using <code>daystoyears()</code> you must make sure you
 have <em>no</em> daily effect anymore in your data. Now, measurements
 are often planned on a weekly basis, and there are:</p>
 <div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" tabindex="-1"></a><span class="fl">365.25</span><span class="sc">/</span><span class="dv">7</span></span>
 <span id="cb5-2"><a href="#cb5-2" tabindex="-1"></a><span class="co">#&gt; [1] 52.17857</span></span></code></pre></div>
-<p>… approximatey 52 weeks (plus 0.179) in a “year”. So you have to
+<p>… approximately 52 weeks (plus 0.179) in a “year”. So you have to
 choose for frequency: either <code>frequency = 48</code> as “four
 measurements per month”, but then, time interval is:</p>
 <div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" tabindex="-1"></a><span class="fl">365.25</span><span class="sc">/</span><span class="dv">48</span></span>
@@ -561,7 +562,7 @@ have exact subunits, plus, usually the living organisms do not really
 care if we are sunday or monday!</p></li>
 <li><p>Conversion from time expressed in days must be done with
 <code>daystoyears()</code> to take this into account, but only after
-making sure that the daily effect is eliminated (only use measurments
+making sure that the daily effect is eliminated (only use measurements
 made at the same hour, or aggregate data by days before transformation),
 because there will be a <em>shift in the hours</em> during the
 calculation. You can regularize you time series using

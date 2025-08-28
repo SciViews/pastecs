@@ -45,21 +45,21 @@ CenterD2(series, window=nrow(series)/5, plotit=TRUE, add=FALSE,
   \item{units.text }{Time units of the series, nicely formatted for graphs}
 }
 \references{
-Cooley, W.W. & P.R. Lohnes, 1962. \emph{Multivariate procedures for the behavioural sciences.} Whiley & sons.
+Cooley, W.W. & P.R. Lohnes, 1962. \emph{Multivariate procedures for the behavioral sciences.} Whiley & sons.
 
-Dagnélie, P., 1975. \emph{Analyse statistique à plusieurs variables.} Presses Agronomiques de Gembloux.
+DagnÃ©lie, P., 1975. \emph{Analyse statistique ? plusieurs variables.} Presses Agronomiques de Gembloux.
 
-Ibanez, F., 1975. \emph{Contribution à l'analyse mathématique des évènements en écologie planctonique: optimisations méthodologiques; étude expérimentale en continu à petite échelle du plancton côtier.} Thèse d'état, Paris VI.
+Ibanez, F., 1975. \emph{Contribution Ã  l'analyse mathÃ©matique des Ã©vÃ¨nements en Ã©cologie planctonique: optimisations mÃ©thodologiques; Ã©tude expÃ©rimentale en continu Ã  petite Ã©chelle du plancton cÃ´tier.} ThÃ¨se d'Ã©tat, Paris VI.
 
-Ibanez, F., 1976. \emph{Contribution à l'analyse mathématique des évènements en écologie planctonique. Optimisations méthodologiques.} Bull. Inst. Océanogr. Monaco, 72:1-96.
+Ibanez, F., 1976. \emph{Contribution Ã  l'analyse mathÃ©matique des Ã©vÃ¨nements en Ã©cologie planctonique. Optimisations mÃ©thodologiques.} Bull. Inst. OcÃ©anogr. Monaco, 72:1-96.
 
 Ibanez, F., 1981. \emph{Immediate detection of heterogeneities in continuous multivariate oceanographic recordings. Application to time series analysis of changes in the bay of Villefranche sur mer.} Limnol. Oceanogr., 26:336-349.
 
 Ibanez, F., 1991. \emph{Treatment of the data deriving from the COST 647 project on coastal benthic ecology: The within-site analysis.} In: B. Keegan (ed), \emph{Space and time series data analysis in coastal benthic ecology}, p 5-43.
 }
-\author{ Frédéric Ibanez (\email{ibanez@obs-vlfr.fr}), Philippe Grosjean (\email{phgrosjean@sciviews.org}) }
+\author{ FrÃ©dÃ©ric Ibanez (\email{ibanez@obs-vlfr.fr}), Philippe Grosjean (\email{phgrosjean@sciviews.org}) }
 
-\section{WARNING }{If data are too heterogeneous, results could be biased (a singularity matrix appears in the calculations).} 
+\section{WARNING }{If data are too heterogeneous, results could be biased (a singularity matrix appears in the calculations).}
 
 \seealso{ \code{\link[stats]{acf}} }
 

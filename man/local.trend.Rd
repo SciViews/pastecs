@@ -30,22 +30,22 @@ local.trend(x, k=mean(x), plotit=TRUE, type="l", cols=1:2, ltys=2:1,
 }
 \details{
   With \code{local.trend()}, you can:
-  
+
   - detect changes in the mean value of a time series
-  
-  - determine the date of occurence of such changes
-  
+
+  - determine the date of occurrence of such changes
+
   - estimate the mean values on homogeneous intervals
 }
 \value{
   a 'local.trend' object is returned. It has the method \code{identify()}
 }
-\references{ 
-Ibanez, F., J.M. Fromentin & J. Castel, 1993. \emph{Application de la méthode
-  des sommes cumulées à l'analyse des séries chronologiques océanographiques.}
+\references{
+Ibanez, F., J.M. Fromentin & J. Castel, 1993. \emph{Application de la mÃ©thode
+  des sommes cumulÃ©es Ã  l'analyse des sÃ©ries chronologiques ocÃ©anographiques.}
   C. R. Acad. Sci. Paris, Life Sciences, 316:745-748.
 }
-\author{ Frédéric Ibanez (\email{ibanez@obs-vlfr.fr}), Philippe Grosjean (\email{phgrosjean@sciviews.org}) }
+\author{ FrÃ©dÃ©ric Ibanez (\email{ibanez@obs-vlfr.fr}), Philippe Grosjean (\email{phgrosjean@sciviews.org}) }
 
 \note{
   Once transitions are identified with this method, you can use

@@ -18,9 +18,9 @@ stat.desc(x, basic=TRUE, desc=TRUE, norm=FALSE, p=0.95)
   \item{p}{ the probability level to use to calculate the confidence interval on the mean (CI.mean). By default, \code{p=0.95} }
 }
 \value{
-  a data frame with the various statistics in rows and with each column correponding to a variable in the data frame, or to a separate time series
+  a data frame with the various statistics in rows and with each column corresponding to a variable in the data frame, or to a separate time series
 }
-\author{ Frédéric Ibanez (\email{ibanez@obs-vlfr.fr}), Philippe Grosjean (\email{phgrosjean@sciviews.org}) }
+\author{ FrÃ©dÃ©ric Ibanez (\email{ibanez@obs-vlfr.fr}), Philippe Grosjean (\email{phgrosjean@sciviews.org}) }
 \note{ The Shapiro-Wilk test of normality is not available yet in Splus and it returns 'NA' in this environment. If you prefer to get separate statistics for various time intervals in your time series, use \code{stat.slide()}. If your data are fish or plankton sampled with a net, consider using the Pennington statistics (see \code{stat.pen()}) }
 
 \seealso{ \code{\link{stat.slide}}, \code{\link{stat.pen}} }

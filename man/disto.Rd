@@ -5,7 +5,7 @@
 
 \title{ Compute and plot a distogram }
 \description{
-  A distogram is an extension of the variogram to a multivariate time-series. It computes, for each observation (with a constant interval h between each observation), the euclidean distance normated to one (chord distance)
+  A distogram is an extension of the variogram to a multivariate time-series. It computes, for each observation (with a constant interval h between each observation), the euclidean distance standardized to one (chord distance)
 }
 \usage{
 disto(x, max.dist=nrow(x)/4, plotit=TRUE, disto.data=NULL)
@@ -19,14 +19,14 @@ disto(x, max.dist=nrow(x)/4, plotit=TRUE, disto.data=NULL)
 \value{
   A data frame containing distance and distogram values
 }
-\references{ 
-Dauvin, J.C. & F. Ibanez, 1986. \emph{Variations à long-terme (1977-1985) du peuplement des sables fins de la Pierre Noire (baie de Morlaix, Manche Occidentale): analyse statistique de l'évolution structurale.} Hydrobiologia, 142:171-186.
+\references{
+Dauvin, J.C. & F. Ibanez, 1986. \emph{Variations Ã  long-terme (1977-1985) du peuplement des sables fins de la Pierre Noire (baie de Morlaix, Manche Occidentale): analyse statistique de l'Ã©volution structurale.} Hydrobiologia, 142:171-186.
 
 Ibanez, F. & J.C. Dauvin, 1988. \emph{Long-term changes (1977-1987) in a muddy fine sand Abra alba - Melinna palmate community from the Western English Channel: multivariate time-series analysis.} Mar. Ecol. Prog. Ser., 49:65-81.
 
 Mackas, D.L., 1984. \emph{Spatial autocorrelation of plankton community composition in a continental shelf ecosystem.} Limnol. Ecol., 20:451-471.
 }
-\author{ Frédéric Ibanez (\email{ibanez@obs-vlfr.fr}), Philippe Grosjean (\email{phgrosjean@sciviews.org}) }
+\author{ FrÃ©dÃ©ric Ibanez (\email{ibanez@obs-vlfr.fr}), Philippe Grosjean (\email{phgrosjean@sciviews.org}) }
 
 \seealso{ \code{\link{vario}} }
 

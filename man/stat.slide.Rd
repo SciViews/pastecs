@@ -8,14 +8,14 @@
 
 \title{ Sliding statistics }
 \description{
-Statistical parameters are not constant along a time series: mean or variance can vary each year, or during particular intervals (radical or smooth changes due to a pollution, a very cold winter, a shift in the system behaviour, etc. Sliding statistics offer the potential to describe series on successive blocs defined along the space-time axis
+Statistical parameters are not constant along a time series: mean or variance can vary each year, or during particular intervals (radical or smooth changes due to a pollution, a very cold winter, a shift in the system behavior, etc. Sliding statistics offer the potential to describe series on successive blocs defined along the space-time axis
 }
 
 \usage{
 stat.slide(x, y, xcut=NULL, xmin=min(x), n=NULL, frequency=NULL,
         deltat=1/frequency, basic=FALSE, desc=FALSE, norm=FALSE,
         pen=FALSE, p=0.95)
-\method{print}{stat.slide}(x, \dots) 
+\method{print}{stat.slide}(x, \dots)
 \method{plot}{stat.slide}(x, stat="mean", col=c(1, 2), lty=c(par("lty"), par("lty")),
         leg=FALSE, llab=c("series", stat), lpos=c(1.5, 10), xlab="time", ylab="y",
         main=paste("Sliding statistics"), \dots)
@@ -29,7 +29,7 @@ stat.slide(x, y, xcut=NULL, xmin=min(x), n=NULL, frequency=NULL,
   \item{xmin}{ the minimal value in the time-scale to use for constructing a vector of equally spaced breaks }
   \item{n}{ the number of breaks to use }
   \item{frequency}{ the frequency of the breaks in the time-scale }
-  \item{deltat}{ the bloc interval touse for constructing an equally-spaced break vector. \code{deltat} is 1/\code{frequency} }
+  \item{deltat}{ the bloc interval for constructing an equally-spaced break vector. \code{deltat} is 1/\code{frequency} }
   \item{basic}{ do we have to return basic statistics (by default, it is FALSE)? These are: the number of values (nbr.val), the number of null values (nbr.null), the number of missing values (nbr.na), the minimal value (min), the maximal value (max), the range (range, that is, max-min) and the sum of all non-missing values (sum) }
   \item{desc}{ do we have to return descriptive statistics (by default, it is FALSE)? These are: the median (median), the mean (mean), the standard error on the mean (SE.mean), the confidence interval of the mean (CI.mean) at the \code{p} level, the variance (var), the standard deviation (std.dev) and the variation coefficient (coef.var) defined as the standard deviation divided by the mean }
   \item{norm}{ do we have to return normal distribution statistics (by default, it is FALSE)? the skewness coefficient g1 (skewness), its significant criterium (skew.2SE, that is, g1/2.SEg1; if skew.2SE > 1, then skewness is significantly different than zero), kurtosis coefficient g2 (kurtosis), its significant criterium (kurt.2SE, same remark than for skew.2SE), the statistic of a Shapiro-Wilk test of normality (normtest.W) and its associated probability (normtest.p) }
@@ -52,7 +52,7 @@ stat.slide(x, y, xcut=NULL, xmin=min(x), n=NULL, frequency=NULL,
 \value{
   An object of type 'stat.slide' is returned. It has methods \code{print()}, \code{plot()} and \code{lines()}.
 }
-\author{ Frédéric Ibanez (\email{ibanez@obs-vlfr.fr}), Philippe Grosjean (\email{phgrosjean@sciviews.org}) }
+\author{ FrÃ©dÃ©ric Ibanez (\email{ibanez@obs-vlfr.fr}), Philippe Grosjean (\email{phgrosjean@sciviews.org}) }
 
 \seealso{ \code{\link{stat.desc}}, \code{\link{stat.pen}}, \code{\link{pennington}}, \code{\link{local.trend}}, \code{\link{decmedian}} }
 

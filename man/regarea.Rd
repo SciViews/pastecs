@@ -21,22 +21,22 @@ regarea(x, y=NULL, xmin=min(x), n=length(x),
   \item{rule}{ the rule to use for extrapolated values (outside of the range in the initial irregular time series) in the regular time series. With \code{rule=1} (by default), these entries are not calculated and get \code{NA}; with \code{rule=2}, these entries are extrapolated }
   \item{window}{ size of the window to use for interpolation. By default, adjacent windows are used (\code{window=deltat}) }
   \item{interp}{ indicates if matching observations in both series must be calculated (\code{interp=TRUE}), or if initial observations are used "as is" in the final regular series (\code{interp=FALSE}, by default) }
-  \item{split}{ a parameter to optimise calculation time and to avoid saturation of the memory. Very long time series are splitted into smaller subunits. This is transparent for the user. The default value of \code{split=100} should be rarely changed. Give a lower value if the program fails and reports a memory problem during calculation }
+  \item{split}{ a parameter to optimize calculation time and to avoid saturation of the memory. Very long time series are splitted into smaller subunits. This is transparent for the user. The default value of \code{split=100} should be rarely changed. Give a lower value if the program fails and reports a memory problem during calculation }
 }
 \details{
-  This is a linear interpolation method described by Fox (1972). It takes into account all observations located in a given time window around the missing observation. On the contrary to many other interpolations (constant, linear, spline), the interpolated curve does not pass by the initial observations. Indeed, a smoothing is also operated simultaneously by this method. The importance of the smoothing is dependent on the size of the window (the largest it is, the smoothest will be the calculated regular time series) 
+  This is a linear interpolation method described by Fox (1972). It takes into account all observations located in a given time window around the missing observation. On the contrary to many other interpolations (constant, linear, spline), the interpolated curve does not pass by the initial observations. Indeed, a smoothing is also operated simultaneously by this method. The importance of the smoothing is dependent on the size of the window (the largest it is, the smoothest will be the calculated regular time series)
 }
 \value{
   An object of type 'regul' is returned. It has methods \code{print()}, \code{summary()}, \code{plot()}, \code{lines()}, \code{identify()}, \code{hist()}, \code{extract()} and \code{specs()}.
 }
-\references{ 
+\references{
 Fox, W.T. & J.A. Brown, 1965. \emph{The use of time-trend analysis for environmental interpretation of limestones.} J. Geol., 73:510-518.
 
 Ibanez, F., 1991. \emph{Treatment of the data deriving from the COST 647 project on coastal benthic ecology: The within-site  analysis.} In: B. Keegan (ed). Space and Time Series Data Analysis in Coastal Benthic Ecology. Pp 5-43.
 
 Ibanez, F. & J.C. Dauvin, 1988. \emph{Long-term changes (1977-1987) on a muddy fine sand Abra alba - Melinna palmata population community from the Western English Channel.} J. Mar. Ecol. Prog. Ser., 49:65-81.
 }
-\author{ Philippe Grosjean (\email{phgrosjean@sciviews.org}), Frédéric Ibanez (\email{ibanez@obs-vlfr.fr}) }
+\author{ Philippe Grosjean (\email{phgrosjean@sciviews.org}), FrÃ©dÃ©ric Ibanez (\email{ibanez@obs-vlfr.fr}) }
 
 \seealso{ \code{\link{regul}}, \code{\link{regconst}}, \code{\link{reglin}}, \code{\link{regspline}}, \code{\link{regul.screen}}, \code{\link{regul.adj}}, \code{\link{tseries}}, \code{\link{is.tseries}} }
 

@@ -54,7 +54,7 @@ turnpoints(x, calc.proba = TRUE)
 \details{
   This function tests if the time series is purely random or not. Kendall (1976) proposed a series of tests for this. Moreover, graphical methods using the position of the turning points to draw automatically envelopes around the data are implemented, and also the drawing of median points between these envelopes.
 
-  With a purely random time series, one expect to find, on average, a turning point (peak or pit that is, an observation that is preceeded and followed by, respectively, lower or higher observations) every 1.5 observation. Given it is impossible to determine if first and last observation are turning point, it gives:
+  With a purely random time series, one expect to find, on average, a turning point (peak or pit that is, an observation that is preceded and followed by, respectively, lower or higher observations) every 1.5 observation. Given it is impossible to determine if first and last observation are turning point, it gives:
 
   \deqn{E(p) = 2/3*(n-2)}
 
@@ -84,8 +84,8 @@ Regarding your specific question, 'info' is the quantity of information I associ
   \item{n}{ The number of observations }
   \item{points}{ The value of the points in the series, after elimination of ex-aequos }
   \item{pos}{ The position of the points on the time scale in the series (including ex-aequos) }
-  \item{exaequos}{ Location of exaequos (1), or not (0) }
-  \item{nturns}{ Total number of tunring points in the whole time series }
+  \item{exaequos}{ Location of ex aequos (1), or not (0) }
+  \item{nturns}{ Total number of turning points in the whole time series }
   \item{firstispeak}{ Is the first turning point a peak (\code{TRUE}), or not (\code{FALSE}) }
   \item{peaks}{ Logical vector. Location of the peaks in the time series without ex-aequos }
   \item{pits}{ Logical vector. Location of the pits in the time series without ex-aequos}
